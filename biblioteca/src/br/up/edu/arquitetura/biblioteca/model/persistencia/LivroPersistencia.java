@@ -11,7 +11,8 @@ public class LivroPersistencia {
 	public Livro insert(Livro livro) {
 		
 		//salvar no array
-		livro.setId(livros.size() + 1);		
+		livro.setId(livros.size());	
+		livros.add(livro);
 		return livros.get(livro.getId());
 	}
 	

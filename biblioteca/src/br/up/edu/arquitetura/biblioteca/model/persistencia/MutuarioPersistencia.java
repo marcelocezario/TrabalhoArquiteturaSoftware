@@ -12,7 +12,7 @@ public class MutuarioPersistencia {
 	public Mutuario insert(Mutuario mutuario) {
 		
 		//salvar no array
-		mutuario.setId(mutuarios.size() + 1);
+		mutuario.setId(mutuarios.size());
 		mutuarios.add(mutuario);
 		
 		return mutuarios.get(mutuario.getId());
