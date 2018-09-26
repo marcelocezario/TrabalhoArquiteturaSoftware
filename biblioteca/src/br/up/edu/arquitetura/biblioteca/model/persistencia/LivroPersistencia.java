@@ -7,10 +7,14 @@ import br.up.edu.arquitetura.biblioteca.model.dominio.Livro;
 public class LivroPersistencia {
 	
 	private static ArrayList<Livro> livros = new ArrayList<Livro>();
+	private static int id;
 	
 	public Livro insert(Livro livro) {
 		//salvar no array
-		livro.setId(livros.size());
+		if(livros.size() == 0){
+			livro.setId(id + 1);
+			System.out.println(livro.getId());
+		}
 		livros.add(livro);
 		
 		return livros.get(livro.getId());
