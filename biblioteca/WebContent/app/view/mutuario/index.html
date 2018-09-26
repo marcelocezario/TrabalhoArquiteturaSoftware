@@ -1,32 +1,29 @@
-<div class="alert alert-success alert-dismissible" role="alert" ng-show="successMessage">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  {{successMessage}}
+<div class="alert alert-success alert-dismissible" role="alert"
+	ng-show="successMessage">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	{{successMessage}}
 </div>
 <div class="form-group">
-  <a class="btn btn-success" ui-sref="novoMutuario">Novo Mutuario</a>
+	<a class="btn btn-success" ui-sref="novoMutuario">Novo Mutuario</a>
 </div>
 
 <table class="table table-bordered table-striped">
-  <thead>
-  <tr>
-    <th>
-      Nome
-    </th>
-    <th>
-      Endereço
-    </th>
-    <th>
-      Telefone
-    </th>
-    <th>
-      AÃ§Ãµes
-    </th>
-  </tr>
-  </thead>
-  <tr ng-repeat="mutuario in mutuarios">
-	<td>{{mutuario.nome}}</td>
-	<td>{{mutuario.endereco}}</td>
-    <td>{{mutuario.telefone}}</td>
-    <td><a class="btn btn-primary" ui-sref="editarMutuario({ id: mutuario.id })">Editar</a></td>
-  </tr>
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Endereço</th>
+			<th>Telefone</th>
+			<th>Ação</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="mutuario in mutuarios">
+		<td>{{mutuario.nome}}</td>
+		<td>{{mutuario.endereco}}</td>
+		<td>{{mutuario.telefone}}</td>
+		<td><a class="btn btn-primary"
+			ui-sref="editarMutuario({ id: mutuario.id })">Editar</a></td>
+	</tr>
 </table>

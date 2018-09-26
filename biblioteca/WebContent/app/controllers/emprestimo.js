@@ -34,3 +34,17 @@ APP.controller('EmprestimoEditarController', function($scope, $state, $statePara
     );
   };
 });
+
+APP.controller('EmprestimoController', function($scope, $state, $stateParams, EmprestimoService) {
+	  $scope.emprestimo = EmprestimoService.get({ id: $stateParams.id });
+
+	  $scope.emprestimoDevolver = function() {
+	    $scope.emprestimo.$delete(
+	      function() {
+	        $state.go('emprestimos', {'successMessage': "emprestimo devolvido com sucesso!"});
+	      }, function() {
+	        $scope.errorMessage = "Ocorreu um erro no servidor. Verifique se todos os campos foram preenchidos corretamente.";
+	      }
+	    );
+	  };
+	});

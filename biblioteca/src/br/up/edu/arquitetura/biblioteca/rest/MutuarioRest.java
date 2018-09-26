@@ -32,16 +32,7 @@ public class MutuarioRest {
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<Mutuario> find(@QueryParam("q") String query) throws Exception {
-		if (mn.listarTodos().size() == 0) {
-			Mutuario mutuario = new Mutuario("luiz", "Av. iguaçu, 1200", "4578894616");
-			Mutuario mutuario1 = new Mutuario("luiz1", "Av. iguaçu,1 1200", "4578894616");
-			Mutuario mutuario2 = new Mutuario("luiz2", "Av. iguaçu, 1 1200", "4578894616");
-
-			mn.salvar(mutuario);
-			mn.salvar(mutuario1);
-			mn.salvar(mutuario2);
-
-		}
+		mn.load();
 		return mn.listarTodos();
 	}
 

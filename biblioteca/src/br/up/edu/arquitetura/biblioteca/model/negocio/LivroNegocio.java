@@ -27,7 +27,6 @@ public class LivroNegocio {
 		if (livro.getId() == null) {
 			return persist.insert(livro);
 		} else {
-			System.out.println(livro.getAutor().getNome());
 			return persist.update(livro);
 		}
 	}
@@ -41,7 +40,6 @@ public class LivroNegocio {
 		
 		//Não mexa aqui !!!!!!!!!!!!!!
 		//Não altere tb
-
 		if (listarTodos().size() == 0) {
 			Autor jv = autorBC.find("Julio Verne");
 			Autor ja = autorBC.find("João de ferro");

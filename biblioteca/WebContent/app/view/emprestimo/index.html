@@ -1,37 +1,38 @@
-<div class="alert alert-success alert-dismissible" role="alert" ng-show="successMessage">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  {{successMessage}}
+<div class="alert alert-success alert-dismissible" role="alert"
+	ng-show="successMessage">
+	<button type="button" class="close" data-dismiss="alert"
+		aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	{{successMessage}}
 </div>
 <div class="form-group">
-  <a class="btn btn-success" ui-sref="novoEmprestimo">Novo Emprestimo</a>
+	<a class="btn btn-success" ui-sref="novoEmprestimo">Novo Emprestimo</a>
 </div>
 
 <table class="table table-bordered table-striped">
-  <thead>
-  <tr>   
-    <th>
-      Data do Emprestimo
-    </th>
-    <th>
-      Data para Devolução
-    </th>
-       <th>
-      Mutuario
-    </th>
-     <th>
-      Livro
-    </th>
-    <th>    
-		Ações
-    </th>
-  </tr>
-  </thead>
-  <tr ng-repeat="emprestimo in emprestimos">
-    <td>{{emprestimo.dataEmprestimo}}</td>
-    <td>{{emprestimo.dataDevolucao}}</td>
-    <td><ser-tooltip endereco="{{emprestimo.mutuario.endereco}}" nome="{{emprestimo.mutuario.nome}}" telefone="{{emprestimo.mutuario.telefone}}" ></ser-tooltip></td>
-   <td><ser-tooltip nome="{{emprestimo.livro.titulo}}"
-    pagina="{{emprestimo.livro.pagina}}" resumo="{{emprestimo.livro.resumo}}" status="{{emprestimo.livro.status}}" ></ser-tooltip></td>
-    <td><a class="btn btn-primary" ui-sref="editarEmprestimo({ id: emprestimo.id })">Editar</a></td>
-  </tr>
+	<thead>
+		<tr>
+			<th>Data do Emprestimo</th>
+			<th>Data para Devolucao</th>
+			<th>Mutuario</th>
+			<th>Livro</th>
+			<th colspan="2">Acao</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="emprestimo in emprestimos">
+		<td>{{emprestimo.dataEmprestimo}}</td>
+		<td>{{emprestimo.dataDevolucao}}</td>
+		<td><ser-tooltip endereco="{{emprestimo.mutuario.endereco}}"
+				nome="{{emprestimo.mutuario.nome}}"
+				telefone="{{emprestimo.mutuario.telefone}}"></ser-tooltip></td>
+		<td><ser-tooltip nome="{{emprestimo.livro.titulo}}"
+				pagina="{{emprestimo.livro.pagina}}"
+				resumo="{{emprestimo.livro.resumo}}"
+				status="{{emprestimo.livro.status}}"></ser-tooltip></td>
+		<td><a class="btn btn-primary"
+			ui-sref="editarEmprestimo({ id: emprestimo.id })">Editar</a></td>
+		<td><a class="btn btn-primary"
+			ui-sref="devolverEmprestimo({ id: emprestimo.id })">Devolver</a></td>
+	</tr>
 </table>

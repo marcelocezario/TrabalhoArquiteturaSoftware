@@ -34,4 +34,9 @@ public class EmprestimoNegocio {
 		
 		return persist.list();
 	}
+
+	public void devolver(int id) {
+		
+		persist.devoler(findId(id));
+	}
 }

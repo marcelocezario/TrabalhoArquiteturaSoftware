@@ -73,8 +73,9 @@ public class EmprestimoRest {
 	
 	@DELETE
 	@Path("{id}")
-	public void devolverLivro(final @PathParam("id") int id){
+	public void delete(final @PathParam("id") int id){
 		
+		bc.devolver(id);
 	}
 	
 }

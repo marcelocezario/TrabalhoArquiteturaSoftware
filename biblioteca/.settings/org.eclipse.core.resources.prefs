@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/br/up/edu/arquitetura/biblioteca/model/negocio/AutorNegocio.java=UTF-8
 encoding//src/br/up/edu/arquitetura/biblioteca/model/negocio/LivroNegocio.java=UTF-8
+encoding//src/br/up/edu/arquitetura/biblioteca/model/negocio/MutuarioNegocio.java=UTF-8
 encoding//src/br/up/edu/arquitetura/biblioteca/rest/AutorRest.java=UTF-8
 encoding//src/br/up/edu/arquitetura/biblioteca/rest/MutuarioRest.java=UTF-8
 encoding/<project>=US-ASCII
