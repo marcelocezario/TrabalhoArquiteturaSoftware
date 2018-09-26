@@ -35,7 +35,7 @@ public class Mutuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {

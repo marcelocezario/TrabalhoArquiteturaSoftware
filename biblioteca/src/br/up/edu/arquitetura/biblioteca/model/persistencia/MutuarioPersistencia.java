@@ -22,11 +22,6 @@ public class MutuarioPersistencia {
 		return mutuarios;
 	}
 
-	public Mutuario findId(int id) {
-		// busca pelo id
-		return mutuarios.get(id);	
-	}
-
 	public Mutuario update(Mutuario mutuario) {
 		Mutuario aux = mutuarios.get(mutuario.getId());
 		
@@ -47,5 +42,14 @@ public class MutuarioPersistencia {
 		}
 		return mutuarioRetorno;
 	}
+	
+	public Mutuario findId(int id) {
+		// busca pelo id
+		return mutuarios.get(id);	
+	}
+
+
+	
+
 	
 }

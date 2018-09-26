@@ -11,7 +11,6 @@ public class AutorNegocio {
 
 	public ArrayList<Autor> listarTodos() {
 		
-		System.out.println("lista");
 		return persist.list();
 	}
 

@@ -10,7 +10,7 @@ public class MutuarioNegocio {
 	private MutuarioPersistencia persist = new MutuarioPersistencia();
 
 	public ArrayList<Mutuario> listarTodos() {
-		System.out.println("lista");
+		
 		return persist.list();
 	}
 
@@ -21,17 +21,23 @@ public class MutuarioNegocio {
 
 	public Mutuario salvar(Mutuario mutuario) {
 
-		if (mutuario.getId() != 0) {
-			System.out.println("aqui mutuario update");
+		if (mutuario.getId() == null) {
 			return persist.update(mutuario);
 
 		} else {
-			System.out.println("aqui mutuario insert ");
 			return persist.insert(mutuario);
 		}
 	}
 
 	public Mutuario findId(int id) {
 		return persist.findId(id);
+	}
+	
+	public void load() {
+		
+		if (listarTodos().size() == 0) {
+			salvar(new Mutuario("Marcelo Henrique", "Rua Senador Accyoli Filho, 511", "41999998888"));
+			salvar(new Mutuario("Gabryel", "Rua A, 10", "4133333333"));
+		}
 	}
 }

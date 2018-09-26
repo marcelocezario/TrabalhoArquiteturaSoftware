@@ -25,31 +25,24 @@ import java.net.URI;
 public class MutuarioRest {
 
 	/*
-	 * mn = Mutuario Negocio
+	 * bc = business controller
 	 */
-	private MutuarioNegocio mn = new MutuarioNegocio();
+	private MutuarioNegocio bc = new MutuarioNegocio();
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<Mutuario> find(@QueryParam("q") String query) throws Exception {
-		if (mn.listarTodos().size() == 0) {
-			Mutuario mutuario = new Mutuario("luiz", "Av. iguaçu, 1200", "4578894616");
-			Mutuario mutuario1 = new Mutuario("luiz1", "Av. iguaçu,1 1200", "4578894616");
-			Mutuario mutuario2 = new Mutuario("luiz2", "Av. iguaçu, 1 1200", "4578894616");
-
-			mn.salvar(mutuario);
-			mn.salvar(mutuario1);
-			mn.salvar(mutuario2);
-
+		if (bc.listarTodos().size() == 0) {
+			bc.load();
 		}
-		return mn.listarTodos();
+		return bc.listarTodos();
 	}
 
 	@GET
 	@Path("{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Mutuario load(@PathParam("id") int id) throws Exception {
-		Mutuario result = mn.findId(id);
+		Mutuario result = bc.findId(id);
 
 		if (result == null) {
 			throw new NotFoundException();
@@ -63,7 +56,7 @@ public class MutuarioRest {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response insert(Mutuario mutuario, @Context UriInfo uriInfo) throws Exception {
 
-		String id = "" + mn.salvar(mutuario).getId();
+		String id = "" + bc.salvar(mutuario).getId();
 		URI location = uriInfo.getRequestUriBuilder().path(id).build();
 
 		return Response.created(location).entity(id).build();
@@ -76,7 +69,7 @@ public class MutuarioRest {
 	public void update(@PathParam("id") int id, Mutuario mutuario) throws Exception {
 
 		mutuario.setId(id);
-		mn.salvar(mutuario);
+		bc.salvar(mutuario);
 	}
 
 }
