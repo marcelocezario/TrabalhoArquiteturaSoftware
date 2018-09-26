@@ -41,24 +41,4 @@ public class LivroNegocio {
 			salvar(new Livro("Testando 2", 400, "Esse é outro teste", autorBC.findId(1), false));
 		}
 	}
-
-/*	
-	public void load() {
-		autorBC.load();
-		Autor jv = autorBC.find("Julio Verne");
-		Autor jrrt = autorBC.find("J.R.R Tolkien");
-		System.out.println("load lirvro " + jv.getNome());
-		salvar(new Livro("Viagem ao Centro da Terra", 200, "A hist����ria de jovens que viajam ao centro da terra.", jv,
-				false));
-		salvar(new Livro("A Volta ao Mundo em 80 dias", 320, "Uma competi��������o ao redor do mundo", jv, false));
-		salvar(new Livro("O Hobbit", 295,
-				"Pequenos seres de p����s peludos ajudando an����es a enfrentar um drag����o.", jrrt, false));
-		salvar(new Livro("O Senhor dos An����is", 1200, "Uma jornada ����pica contra o mal.", jrrt, false));
-	}
-*/
-
-
-
-
-
 }

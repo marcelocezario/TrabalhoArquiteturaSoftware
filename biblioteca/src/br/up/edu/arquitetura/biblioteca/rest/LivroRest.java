@@ -34,6 +34,7 @@ public class LivroRest {
 	public List<Livro> find(@QueryParam("q") String query) throws Exception {
 		if (bc.listarTodos().size() == 0) {
 			bc.load();
+			
 		}
 		return bc.listarTodos();
 	}
