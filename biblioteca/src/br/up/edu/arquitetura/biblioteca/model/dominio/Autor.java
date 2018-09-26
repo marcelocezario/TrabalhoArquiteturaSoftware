@@ -2,7 +2,7 @@ package br.up.edu.arquitetura.biblioteca.model.dominio;
 
 public class Autor {
 	
-	private int id;
+	private Integer id;
 	private String nome;
 	private String nacionalidade;
 	
@@ -14,7 +14,7 @@ public class Autor {
 		this.nacionalidade = nacionalidade;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {
