@@ -10,7 +10,6 @@ public class MutuarioPersistencia {
 	private static ArrayList<Mutuario> mutuarios = new ArrayList<Mutuario>();
 
 	public Mutuario insert(Mutuario mutuario) {
-		
 		//salvar no array
 		mutuario.setId(mutuarios.size());
 		mutuarios.add(mutuario);

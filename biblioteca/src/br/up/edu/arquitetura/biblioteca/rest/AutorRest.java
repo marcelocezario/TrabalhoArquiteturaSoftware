@@ -32,7 +32,14 @@ public class AutorRest {
     @Produces({ MediaType.APPLICATION_JSON })
     public List<Autor> find(@QueryParam("q") String query) throws Exception {
 		if (bc.listarTodos().size() == 0) {
-			bc.load();
+			Autor autor = new Autor("Julio Verme", "Ingles");
+			Autor autor1 = new Autor("luiz", "Brasileiro");
+			Autor autor2 = new Autor("João de ferro", "Russia");
+
+			bc.salvar(autor);
+			bc.salvar(autor1);
+			bc.salvar(autor2);
+
 		}
         return bc.listarTodos();
     }

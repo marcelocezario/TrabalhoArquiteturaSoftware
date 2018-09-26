@@ -10,13 +10,13 @@ public class AutorNegocio {
 	private AutorPersistencia persist = new AutorPersistencia();
 
 	public ArrayList<Autor> listarTodos() {
-
+		
 		System.out.println("lista");
 		return persist.list();
 	}
 
 	public Autor find(String nome) {
-		
+
 		return persist.find(nome);
 	}
 
@@ -30,16 +30,14 @@ public class AutorNegocio {
 	}
 
 	public Autor findId(int id) {
-		
 		return persist.findId(id);
 	}
 
 	public void load() {
-
+		
 		if (listarTodos().size() == 0) {
 			salvar(new Autor("Julio Verne", "FranÃ§a"));
 			salvar(new Autor("J.R.R Tolkien", "Ã�frica do Sul"));
-			salvar(new Autor("João de ferro", "Russia"));
 		}
 	}
 }

@@ -7,13 +7,12 @@ import br.up.edu.arquitetura.biblioteca.model.dominio.Emprestimo;
 public class EmprestimoPersistencia {
 	
 	private static ArrayList<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
-	private LivroPersistencia livroPersist = new LivroPersistencia();
-	private MutuarioPersistencia mutuarioPersit = new MutuarioPersistencia();
+	private LivroPersistencia lvpersist = new LivroPersistencia();
 	
 	public Emprestimo insert(Emprestimo emprestimo) {
 	
 		emprestimo.setId(emprestimos.size());
-		emprestimo.setLivro(livroPersist.alterarStatus(emprestimo.getLivro().getId()));
+		emprestimo.setLivro(lvpersist.alterarStatus(emprestimo.getLivro().getId()));
 		emprestimos.add(emprestimo);
 		
 		return emprestimos.get(emprestimo.getId());
@@ -26,18 +25,14 @@ public class EmprestimoPersistencia {
 	public Emprestimo update (Emprestimo emprestimo) {
 		
 		Emprestimo aux = emprestimos.get(emprestimo.getId());
-		
 		aux.setId(emprestimo.getId());
-		aux.setDataEmprestimo(emprestimo.getDataEmprestimo());
 		aux.setDataDevolucao(emprestimo.getDataDevolucao());
-		aux.setLivro(livroPersist.findId(emprestimo.getLivro().getId()));
-		aux.setMutuario(mutuarioPersit.findId(emprestimo.getMutuario().getId()));
+		aux.setLivro(emprestimo.getLivro());
 		
 		return aux;
 	}
 	
 	public Emprestimo find (String data) {
-		
 		Emprestimo emprestimoRetorno = null;
 		for (Emprestimo emprestimo : emprestimos) {
 			if (emprestimo.getDataDevolucao().equals(data)) {
@@ -52,17 +47,10 @@ public class EmprestimoPersistencia {
 	}
 
 	public boolean verificaLivro(Emprestimo emprestimo) {
-		
-		if(livroPersist.findId(emprestimo.getLivro().getId()).isStatus()){
+		if(lvpersist.findId(emprestimo.getLivro().getId()).isStatus()){
 			return false;
 		}
 		return true;
 
-	}
-
-	public void devoler(Emprestimo emprestimo) {
-		
-		emprestimo.setLivro(livroPersist.alterarStatus(emprestimo.getLivro().getId()));
-		emprestimos.remove(emprestimo.getId());
 	}
 }

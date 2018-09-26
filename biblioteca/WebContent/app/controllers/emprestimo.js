@@ -1,9 +1,9 @@
-APP.controller('EmprestimoController', function($scope, $state, $stateParams, EmprestimoService) {
+APP.controller('EmprestimoController', function($scope, $state, $stateParams, EmprestimoService, MutuarioService, LivroService) {
   $scope.emprestimos = EmprestimoService.query();
   $scope.successMessage = $stateParams.successMessage;
 });
 
-APP.controller('EmprestimoNovoController', function($scope, $state, $stateParams, EmprestimoService,LivroService , MutuarioService) {
+APP.controller('EmprestimoNovoController', function($scope, $state, $stateParams, EmprestimoService, MutuarioService, LivroService) {
   $scope.emprestimo = new EmprestimoService();
   $scope.livros = new LivroService.query();
   $scope.mutuarios = new MutuarioService.query();
@@ -21,8 +21,8 @@ APP.controller('EmprestimoNovoController', function($scope, $state, $stateParams
 
 APP.controller('EmprestimoEditarController', function($scope, $state, $stateParams, EmprestimoService, MutuarioService, LivroService) {
   $scope.emprestimo = EmprestimoService.get({ id: $stateParams.id });
-  $scope.mutuarios = MutuarioService.query();
   $scope.livros = LivroService.query();
+  $scope.mutuarios = MutuarioService.query();
 
   $scope.atualizarEmprestimo = function() {
     $scope.emprestimo.$update(
@@ -34,17 +34,3 @@ APP.controller('EmprestimoEditarController', function($scope, $state, $statePara
     );
   };
 });
-
-APP.controller('EmprestimoController', function($scope, $state, $stateParams, EmprestimoService) {
-	  $scope.emprestimo = EmprestimoService.get({ id: $stateParams.id });
-
-	  $scope.emprestimoDevolver = function() {
-	    $scope.emprestimo.$delete(
-	      function() {
-	        $state.go('emprestimos', {'successMessage': "emprestimo devolvido com sucesso!"});
-	      }, function() {
-	        $scope.errorMessage = "Ocorreu um erro no servidor. Verifique se todos os campos foram preenchidos corretamente.";
-	      }
-	    );
-	  };
-	});

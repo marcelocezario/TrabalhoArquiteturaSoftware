@@ -10,9 +10,8 @@ public class AutorPersistencia  {
 	public Autor insert(Autor autor) {
 		//salvar no array
 		autor.setId(autores.size());
-		System.out.println(autor.getId());
 		autores.add(autor);
-
+		
 		return autores.get(autor.getId());
 	}
 	

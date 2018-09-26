@@ -61,13 +61,7 @@ var APP = angular.module('livroApp', ['ui.router', 'ngResource'])
           params: {
             'successMessage': null
           }
-        }).state('emprestimos', {
-            url: '/emprestimos',
-            controller: 'EmprestimoDevolver',
-            params: {
-              'successMessage': null
-            }
-          }).state('novoEmprestimo', {
+        }).state('novoEmprestimo', {
           url: '/emprestimos/novo',
           templateUrl: 'app/view/emprestimo/novo.html',
           controller: 'EmprestimoNovoController'
