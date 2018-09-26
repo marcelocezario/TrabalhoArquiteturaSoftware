@@ -32,12 +32,15 @@ public class LivroNegocio {
 	}
 
 	public Livro findId(int id) {
+		
 		return persist.findId(id);
 	}
 	
 	public void load() {
+		
 		//Não mexa aqui !!!!!!!!!!!!!!
 		//Não altere tb
+<<<<<<< HEAD
 		
 		/*
 		 * GABRYEL, porque mexeu aqui?
@@ -50,9 +53,15 @@ public class LivroNegocio {
 		Autor jv = autorBC.find("Julio Verme");
 		Autor lu = autorBC.find("luiz");
 
+=======
+		autorBC.load();		
+>>>>>>> 218250d750bee6136bd7dee7ec6be40aff269cce
 		if (listarTodos().size() == 0) {
+			Autor jv = autorBC.find("Julio Verne");
+			Autor ja = autorBC.find("João de ferro");
+
 			salvar(new Livro("Testando 1", 200, "Apenas um teste", jv , false));
-			salvar(new Livro("Testando 2", 400, "Esse é outro teste", lu , false));
+			salvar(new Livro("Testando 2", 400, "Esse é outro teste", ja , false));
 		}
 	}
 }

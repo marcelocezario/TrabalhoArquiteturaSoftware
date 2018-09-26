@@ -2,7 +2,7 @@ package br.up.edu.arquitetura.biblioteca.model.dominio;
 
 public class Mutuario {
 	
-	private int id;
+	private Integer id;
 	private String nome;
 	private String endereco;
 	private String telefone;
@@ -35,11 +35,12 @@ public class Mutuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
 }

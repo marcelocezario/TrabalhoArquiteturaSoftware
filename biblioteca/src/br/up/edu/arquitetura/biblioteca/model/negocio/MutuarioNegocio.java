@@ -21,7 +21,7 @@ public class MutuarioNegocio {
 
 	public Mutuario salvar(Mutuario mutuario) {
 
-		if (mutuario.getId() != 0) {
+		if (mutuario.getId() != null) {
 			System.out.println("aqui mutuario update");
 			return persist.update(mutuario);
 
