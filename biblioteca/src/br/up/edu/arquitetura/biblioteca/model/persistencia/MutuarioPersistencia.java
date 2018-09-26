@@ -8,18 +8,11 @@ import java.util.ArrayList;
 public class MutuarioPersistencia {
 	
 	private static ArrayList<Mutuario> mutuarios = new ArrayList<Mutuario>();
-	private static int id = 0;
 
 	public Mutuario insert(Mutuario mutuario) {
-		//salvar no array
-		if(mutuarios.size() == 0){
-			mutuario.setId(id + 1);
-			System.out.println(mutuario.getId());
-		} else {
-			mutuario.setId(id);
-			id++;
-		}
 		
+		//salvar no array
+		mutuario.setId(mutuarios.size() + 1);
 		mutuarios.add(mutuario);
 		
 		return mutuarios.get(mutuario.getId());
