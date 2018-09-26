@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
@@ -69,4 +70,11 @@ public class EmprestimoRest {
 		emprestimo.setId(id);
 		bc.salvar(emprestimo);
 	}
+	
+	@DELETE
+	@Path("{id}")
+	public void devolverLivro(final @PathParam("id") int id){
+		
+	}
+	
 }
