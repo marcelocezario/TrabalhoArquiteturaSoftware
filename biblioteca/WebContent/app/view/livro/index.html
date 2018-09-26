@@ -10,30 +10,26 @@
   <thead>
   <tr>
     <th>
-      Título
+      Titulo
     </th>
     <th>
-      Páginas
-    </th>
-     <th>
-      status
+      Paginas
     </th>
     <th>
-<<<<<<< HEAD
-      Status
-=======
       Autor
->>>>>>> f78a765c02382daee08921ffb6da569365451982
     </th>
     <th>
-    Ações
+      Status
+    </th>
+    <th>
+    Acoes
     </th>
   </tr>
   </thead>
   <tr ng-repeat="livro in livros">
     <td>{{livro.titulo}}</td>
     <td>{{livro.paginas}}</td>
-    <td><ser-tooltip nacionalidade="{{livro.autor.nacionalidade}}" nome="{{livro.autor.nome}}"></ser-tooltip></td>
+    <td><ser-tooltip nome="{{livro.autor.nome}}"></ser-tooltip></td>
     <td>{{livro.status}}</td>
     <td><a class="btn btn-primary" ui-sref="editarLivro({ id: livro.id })">Editar</a></td>
   </tr>
