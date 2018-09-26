@@ -11,20 +11,7 @@ public class LivroNegocio {
 	private LivroPersistencia persist = new LivroPersistencia();
 	private AutorNegocio autorBC = new AutorNegocio();
 
-	public void load() {
-		autorBC.load();
-		Autor jv = autorBC.find("Julio Verne");
-		Autor jrrt = autorBC.find("J.R.R Tolkien");
-		System.out.println("load lirvro " + jv.getNome());
-		salvar(new Livro("Viagem ao Centro da Terra", 200, "A hist����ria de jovens que viajam ao centro da terra.", jv,
-				false));
-		salvar(new Livro("A Volta ao Mundo em 80 dias", 320, "Uma competi��������o ao redor do mundo", jv, false));
-		salvar(new Livro("O Hobbit", 295,
-				"Pequenos seres de p����s peludos ajudando an����es a enfrentar um drag����o.", jrrt, false));
-		salvar(new Livro("O Senhor dos An����is", 1200, "Uma jornada ����pica contra o mal.", jrrt, false));
-
-	}
-
+	
 	public ArrayList<Livro> listarTodos() {
 		System.out.println("lista");
 		return persist.list();
@@ -37,19 +24,41 @@ public class LivroNegocio {
 
 	public Livro salvar(Livro livro) {
 
-		if (livro.getId() != 0) {
-			System.out.println("aqui livro update");
-			System.out.println(livro.getAutor().getNome());
-			return persist.update(livro);
-
-		} else {
-			System.out.println("aqui livro insert ");
+		if (livro.getId() == null) {
 			return persist.insert(livro);
-
+		} else {
+			return persist.update(livro);
 		}
 	}
 
 	public Livro findId(int id) {
 		return persist.findId(id);
 	}
+	
+	public void load() {
+		if (listarTodos().size() == 0) {
+			salvar(new Livro("Testando 1", 200, "Apenas um teste", autorBC.findId(0), false));
+			salvar(new Livro("Testando 2", 400, "Esse é outro teste", autorBC.findId(1), false));
+		}
+	}
+
+/*	
+	public void load() {
+		autorBC.load();
+		Autor jv = autorBC.find("Julio Verne");
+		Autor jrrt = autorBC.find("J.R.R Tolkien");
+		System.out.println("load lirvro " + jv.getNome());
+		salvar(new Livro("Viagem ao Centro da Terra", 200, "A hist����ria de jovens que viajam ao centro da terra.", jv,
+				false));
+		salvar(new Livro("A Volta ao Mundo em 80 dias", 320, "Uma competi��������o ao redor do mundo", jv, false));
+		salvar(new Livro("O Hobbit", 295,
+				"Pequenos seres de p����s peludos ajudando an����es a enfrentar um drag����o.", jrrt, false));
+		salvar(new Livro("O Senhor dos An����is", 1200, "Uma jornada ����pica contra o mal.", jrrt, false));
+	}
+*/
+
+
+
+
+
 }
