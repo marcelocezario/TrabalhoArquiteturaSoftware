@@ -14,6 +14,7 @@ public class LivroNegocio {
 	
 	public ArrayList<Livro> listarTodos() {
 		System.out.println("lista");
+
 		return persist.list();
 	}
 

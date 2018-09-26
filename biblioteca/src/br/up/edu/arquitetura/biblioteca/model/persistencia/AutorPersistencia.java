@@ -29,13 +29,12 @@ public class AutorPersistencia  {
 	}
 
 	public Autor find (String nome) {
-		Autor autorRetorno = null;
 		for (Autor autor : autores) {
 			if (autor.getNome().equals(nome)) {
-				autorRetorno = autor;
+				return autor;
 			}
 		}
-		return autorRetorno;
+		return null;
 	}
 	
 	public Autor findId(int id) {
