@@ -22,12 +22,10 @@ public class AutorNegocio {
 
 	public Autor salvar(Autor autor) {
 
-		if (autor.getId() != 0) {
-			System.out.println("aqui autor update");
-			return persist.update(autor);
-		} else {
-			System.out.println("aqui autor insert ");
+		if (autor.getId() == null) {
 			return persist.insert(autor);
+		} else {
+			return persist.update(autor);
 		}
 	}
 
