@@ -41,25 +41,7 @@ public class LivroNegocio {
 		
 		//Não mexa aqui !!!!!!!!!!!!!!
 		//Não altere tb
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-		/*
-		 * GABRYEL, porque mexeu aqui?
-		 * Não estava adicionando autor, mas agora além de não adicionar autor ta dando erro ao salvar 
-		 * Responda de algum jeito, teu whats não chegas as mensagens
-		 * Agora eu tava mexendo nessa parte começou a dar problema
-		 * 
-		 * 
-		 */
-=======
->>>>>>> parent of b8ab178... Contato Gabryel
-		Autor jv = autorBC.find("Julio Verme");
-		Autor lu = autorBC.find("luiz");
 
-=======
-		autorBC.load();		
->>>>>>> 218250d750bee6136bd7dee7ec6be40aff269cce
 		if (listarTodos().size() == 0) {
 			Autor jv = autorBC.find("Julio Verne");
 			Autor ja = autorBC.find("João de ferro");
