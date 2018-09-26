@@ -10,6 +10,7 @@ public class AutorNegocio {
 	private AutorPersistencia persist = new AutorPersistencia();
 
 	public ArrayList<Autor> listarTodos() {
+		
 		System.out.println("lista");
 		return persist.list();
 	}
@@ -33,10 +34,10 @@ public class AutorNegocio {
 	}
 
 	public void load() {
+		
 		if (listarTodos().size() == 0) {
-			salvar(new Autor("Julio Verne", "França"));
-			salvar(new Autor("J.R.R Tolkien", "África do Sul"));
+			salvar(new Autor("Julio Verne", "FranÃ§a"));
+			salvar(new Autor("J.R.R Tolkien", "Ã�frica do Sul"));
 		}
 	}
-
 }

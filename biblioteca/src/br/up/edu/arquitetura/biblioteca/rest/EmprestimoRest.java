@@ -45,16 +45,16 @@ public class EmprestimoRest {
 		if (result == null) {
 			throw new NotFoundException();
 		}
-
+		
 		return result;
 	}
 
 	@POST
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public Response insert(Emprestimo livro, @Context UriInfo uriInfo) throws Exception {
+	public Response insert(Emprestimo emprestimo, @Context UriInfo uriInfo) throws Exception {
 
-		String id = "" + bc.salvar(livro).getId();
+		String id = "" + bc.salvar(emprestimo).getId();
 		URI location = uriInfo.getRequestUriBuilder().path(id).build();
 
 		return Response.created(location).entity(id).build();
@@ -64,9 +64,9 @@ public class EmprestimoRest {
 	@Path("{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void update(@PathParam("id") int id, Emprestimo livro) throws Exception {
+	public void update(@PathParam("id") int id, Emprestimo emprestimo) throws Exception {
 
-		livro.setId(id);
-		bc.salvar(livro);
+		emprestimo.setId(id);
+		bc.salvar(emprestimo);
 	}
 }
