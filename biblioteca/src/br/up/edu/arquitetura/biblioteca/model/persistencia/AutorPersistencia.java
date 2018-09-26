@@ -6,10 +6,18 @@ import br.up.edu.arquitetura.biblioteca.model.dominio.Autor;
 public class AutorPersistencia  {
 	
 	private static ArrayList<Autor> autores = new ArrayList<Autor>();
+	private static int id;
 	
 	public Autor insert(Autor autor) {
-		//salvar no array
-		autor.setId(autores.size());
+		
+		//salvar no array		
+		if(autores.size() == 0){
+			autor.setId(id + 1);
+			System.out.println(autor.getId());
+		} else {
+			autor.setId(id);
+			id++;
+		}
 		autores.add(autor);
 		
 		return autores.get(autor.getId());

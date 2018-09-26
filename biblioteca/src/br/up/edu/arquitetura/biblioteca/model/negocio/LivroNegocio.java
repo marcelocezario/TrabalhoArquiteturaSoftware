@@ -36,9 +36,14 @@ public class LivroNegocio {
 	}
 	
 	public void load() {
+		//Não mexa aqui !!!!!!!!!!!!!!
+		//Não altere tb
+		Autor jv = autorBC.find("Julio Verme");
+		Autor lu = autorBC.find("luiz");
+
 		if (listarTodos().size() == 0) {
-			salvar(new Livro("Testando 1", 200, "Apenas um teste", autorBC.findId(0), false));
-			salvar(new Livro("Testando 2", 400, "Esse é outro teste", autorBC.findId(1), false));
+			salvar(new Livro("Testando 1", 200, "Apenas um teste", jv , false));
+			salvar(new Livro("Testando 2", 400, "Esse é outro teste", lu , false));
 		}
 	}
 }

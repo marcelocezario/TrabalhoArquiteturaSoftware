@@ -11,7 +11,7 @@ public class EmprestimoPersistencia {
 	
 	public Emprestimo insert(Emprestimo emprestimo) {
 	
-		emprestimo.setId(emprestimos.size());
+		emprestimo.setId(emprestimos.size() + 1);
 		emprestimo.setLivro(lvpersist.alterarStatus(emprestimo.getLivro().getId()));
 		emprestimos.add(emprestimo);
 		
