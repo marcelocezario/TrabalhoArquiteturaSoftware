@@ -27,6 +27,8 @@ public class LivroPersistencia {
 		aux.setPaginas(livro.getPaginas());
 		aux.setResumo(livro.getResumo());
 		aux.setTitulo(livro.getTitulo());
+		aux.setAutor(livro.getAutor());
+
 		
 		return aux;
 	}
