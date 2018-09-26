@@ -21,8 +21,8 @@ public class LivroPersistencia {
 	}
 	
 	public Livro update (Livro livro) {
-		Livro aux = livros.get(livro.getId());
-		aux.setId(livro.getId());
+		
+		Livro aux = findId(livro.getId());
 		aux.setTitulo(livro.getTitulo());
 		aux.setPaginas(livro.getPaginas());
 		aux.setResumo(livro.getResumo());

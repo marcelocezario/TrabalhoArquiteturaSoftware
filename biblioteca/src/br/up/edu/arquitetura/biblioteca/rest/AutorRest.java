@@ -64,7 +64,7 @@ public class AutorRest {
     public Response insert(Autor autor, @Context UriInfo uriInfo) throws Exception {
        
 
-        String id = ""+bc.salvar(autor).getId();
+        String id = "" + bc.salvar(autor).getId();
         URI location = uriInfo.getRequestUriBuilder().path(id).build();
 
         return Response.created(location).entity(id).build();

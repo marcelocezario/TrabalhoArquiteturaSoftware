@@ -2,7 +2,7 @@ package br.up.edu.arquitetura.biblioteca.model.dominio;
 
 public class Livro {
 
-	private int id;
+	private Integer id;
 	private String titulo;
 	private Integer paginas;
 	private String resumo;
@@ -21,7 +21,7 @@ public class Livro {
 		this.status = status;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
