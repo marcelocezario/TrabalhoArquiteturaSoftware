@@ -33,7 +33,7 @@ public class LivroRest {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<Livro> find(@QueryParam("q") String query) throws Exception {
 		if (bc.listarTodos().size() == 0) {
-//			bc.load();
+			bc.load();
 			
 		}
 		return bc.listarTodos();
