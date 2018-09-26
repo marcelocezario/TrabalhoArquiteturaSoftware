@@ -43,5 +43,4 @@ public class AutorPersistencia  {
 		return autores.get(id);	
 
 	}
-
 }
