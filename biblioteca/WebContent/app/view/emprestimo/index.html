@@ -15,10 +15,10 @@
     <th>
       Data para Devolução
     </th>
-    <th>
+       <th>
       Mutuario
     </th>
-    <th>
+     <th>
       Livro
     </th>
     <th>    
@@ -29,8 +29,8 @@
   <tr ng-repeat="emprestimo in emprestimos">
     <td>{{emprestimo.dataEmprestimo}}</td>
     <td>{{emprestimo.dataDevolucao}}</td>
-    <td><ser-tooltip endereco="{{emprestimo.mutuario.endereco}}" nome="{{emprestimo.mutuario.nome}}" telefone="{{emprestimo.mutuario.telefone}}"></ser-tooltip></td>
-    <td><ser-tooltip nacionalidade="{{emprestimo.livro.autor.nacionalidade}}" nome="{{emprestimo.livro.autor.nome}}"
+    <td><ser-tooltip endereco="{{emprestimo.mutuario.endereco}}" nome="{{emprestimo.mutuario.nome}}" telefone="{{emprestimo.mutuario.telefone}}" ></ser-tooltip></td>
+   <td><ser-tooltip nome="{{emprestimo.livro.titulo}}"
     pagina="{{emprestimo.livro.pagina}}" resumo="{{emprestimo.livro.resumo}}" status="{{emprestimo.livro.status}}" ></ser-tooltip></td>
     <td><a class="btn btn-primary" ui-sref="editarEmprestimo({ id: emprestimo.id })">Editar</a></td>
   </tr>
