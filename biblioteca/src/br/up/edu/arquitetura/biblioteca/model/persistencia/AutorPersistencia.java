@@ -20,12 +20,11 @@ public class AutorPersistencia  {
 	}
 	
 	public Autor update (Autor autor) {
-		
-		Autor aux = findId(autor.getId());
-		
-		aux.setNome(autor.getNome());
+		Autor aux = autores.get(autor.getId());
+		aux.setId(autor.getId());
 		aux.setNacionalidade(autor.getNacionalidade());
-
+		aux.setNome(autor.getNome());
+		
 		return aux;
 	}
 

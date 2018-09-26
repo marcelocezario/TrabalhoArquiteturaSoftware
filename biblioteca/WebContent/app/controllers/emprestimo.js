@@ -1,12 +1,12 @@
-APP.controller('EmprestimoController', function($scope, $state, $stateParams, EmprestimoService , MutuarioService, LivroService) {
+APP.controller('EmprestimoController', function($scope, $state, $stateParams, EmprestimoService, MutuarioService, LivroService) {
   $scope.emprestimos = EmprestimoService.query();
   $scope.successMessage = $stateParams.successMessage;
 });
 
-APP.controller('EmprestimoNovoController', function($scope, $state, $stateParams, EmprestimoService , MutuarioService, LivroService) {
+APP.controller('EmprestimoNovoController', function($scope, $state, $stateParams, EmprestimoService, MutuarioService, LivroService) {
   $scope.emprestimo = new EmprestimoService();
-  $scope.livro = new LivroService();
-  $scope.mutuario = new MutuarioService();
+  $scope.livros = new LivroService.query();
+  $scope.mutuarios = new MutuarioService.query();
 
   $scope.criarEmprestimo = function() {
     $scope.emprestimo.$save(
@@ -19,11 +19,10 @@ APP.controller('EmprestimoNovoController', function($scope, $state, $stateParams
   };
 });
 
-APP.controller('EmprestimoEditarController', function($scope, $state, $stateParams,  EmprestimoService , MutuarioService, LivroService) {
-  $scope.emprestimos = EmprestimoService.get({ id: $stateParams.id });
+APP.controller('EmprestimoEditarController', function($scope, $state, $stateParams, EmprestimoService, MutuarioService, LivroService) {
+  $scope.emprestimo = EmprestimoService.get({ id: $stateParams.id });
   $scope.livros = LivroService.query();
   $scope.mutuarios = MutuarioService.query();
-
 
   $scope.atualizarEmprestimo = function() {
     $scope.emprestimo.$update(

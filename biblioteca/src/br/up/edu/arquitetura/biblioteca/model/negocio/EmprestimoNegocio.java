@@ -25,8 +25,7 @@ public class EmprestimoNegocio {
 	}
 
 	public Emprestimo findId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return persist.findId(id);
 	}
 
 	public List<Emprestimo> listarTodos() {
