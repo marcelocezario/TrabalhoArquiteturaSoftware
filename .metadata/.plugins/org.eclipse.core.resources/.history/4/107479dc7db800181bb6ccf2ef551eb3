@@ -1,0 +1,24 @@
+package br.up.edu.arquitetura.biblioteca.model.negocio;
+
+import java.util.ArrayList;
+
+import br.up.edu.arquitetura.biblioteca.model.dominio.Autor;
+import br.up.edu.arquitetura.biblioteca.model.persistencia.AutorPersistencia;
+
+public class AutorNegocio {
+	
+	private AutorPersistencia persist = new AutorPersistencia();
+	
+	public ArrayList<Autor> listarTodos(){
+		return persist.list();
+	}
+	
+	public Autor cadastrar (Autor autor) {
+		// Regra de negócio
+		
+		
+		return autor;
+	}
+	
+
+}

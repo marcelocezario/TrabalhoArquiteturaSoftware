@@ -1,0 +1,27 @@
+package br.up.edu.arquitetura.biblioteca.model.negocio;
+
+import br.up.edu.arquitetura.biblioteca.model.persistencia.LivroPersistencia;
+
+import java.util.ArrayList;
+
+import br.up.edu.arquitetura.biblioteca.model.dominio.Livro;
+
+public class LivroNegocio {
+	
+	private LivroPersistencia persist = new LivroPersistencia();
+	
+	public ArrayList<Livro> listarTodos(){
+		return persist.list();
+	}
+	
+	public Livro cadastrar (Livro livro) {
+		
+		
+		
+		
+		
+		
+		return livro;
+	}
+
+}
