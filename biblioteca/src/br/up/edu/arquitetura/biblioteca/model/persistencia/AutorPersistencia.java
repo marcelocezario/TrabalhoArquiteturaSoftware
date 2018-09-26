@@ -9,7 +9,7 @@ public class AutorPersistencia  {
 	
 	public Autor insert(Autor autor) {
 		//salvar no array
-		autor.setId(autores.size() + 1);
+		autor.setId(autores.size());
 		autores.add(autor);
 		
 		return autores.get(autor.getId());
