@@ -27,6 +27,7 @@ public class LivroNegocio {
 		if (livro.getId() == null) {
 			return persist.insert(livro);
 		} else {
+			System.out.println(livro.getAutor().getNome());
 			return persist.update(livro);
 		}
 	}

@@ -7,6 +7,7 @@ import br.up.edu.arquitetura.biblioteca.model.dominio.Livro;
 public class LivroPersistencia {
 	
 	private static ArrayList<Livro> livros = new ArrayList<Livro>();
+	private AutorPersistencia persist = new AutorPersistencia();
 	
 	public Livro insert(Livro livro) {
 		
@@ -22,13 +23,14 @@ public class LivroPersistencia {
 	
 	public Livro update (Livro livro) {
 		
+		
 		Livro aux = findId(livro.getId());
 		aux.setTitulo(livro.getTitulo());
 		aux.setPaginas(livro.getPaginas());
 		aux.setResumo(livro.getResumo());
 		aux.setTitulo(livro.getTitulo());
-		aux.setAutor(livro.getAutor());
-
+		aux.setAutor(persist.findId(livro.getAutor().getId()));
+		System.out.println(aux.getAutor().getNome());
 		
 		return aux;
 	}
