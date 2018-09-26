@@ -38,6 +38,15 @@ public class LivroNegocio {
 	public void load() {
 		//Não mexa aqui !!!!!!!!!!!!!!
 		//Não altere tb
+		
+		/*
+		 * GABRYEL, porque mexeu aqui?
+		 * Não estava adicionando autor, mas agora além de não adicionar autor ta dando erro ao salvar 
+		 * Responda de algum jeito, teu whats não chegas as mensagens
+		 * Agora eu tava mexendo nessa parte começou a dar problema
+		 * 
+		 * 
+		 */
 		Autor jv = autorBC.find("Julio Verme");
 		Autor lu = autorBC.find("luiz");
 
