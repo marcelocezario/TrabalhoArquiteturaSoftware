@@ -41,6 +41,7 @@ public class LivroNegocio {
 		//Não mexa aqui !!!!!!!!!!!!!!
 		//Não altere tb
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
 		/*
 		 * GABRYEL, porque mexeu aqui?
@@ -50,6 +51,8 @@ public class LivroNegocio {
 		 * 
 		 * 
 		 */
+=======
+>>>>>>> parent of b8ab178... Contato Gabryel
 		Autor jv = autorBC.find("Julio Verme");
 		Autor lu = autorBC.find("luiz");
 
