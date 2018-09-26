@@ -2,7 +2,7 @@ package br.up.edu.arquitetura.biblioteca.model.dominio;
 
 public class Mutuario {
 	
-	private int id;
+	private Integer id;
 	private String nome;
 	private String endereco;
 	private String telefone;

@@ -36,8 +36,8 @@ public class AutorNegocio {
 	public void load() {
 		
 		if (listarTodos().size() == 0) {
-			salvar(new Autor("Julio Verne", "FranÃ§a"));
-			salvar(new Autor("J.R.R Tolkien", "Ã�frica do Sul"));
+			salvar(new Autor("Julio Verne", "Françaa"));
+			salvar(new Autor("J.R.R Tolkien", "África do Sul"));
 		}
 	}
 }
