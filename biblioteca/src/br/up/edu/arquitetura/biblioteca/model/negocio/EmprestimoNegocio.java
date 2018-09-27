@@ -10,6 +10,7 @@ public class EmprestimoNegocio {
 	private EmprestimoPersistencia persist = new EmprestimoPersistencia();
 
 	public Emprestimo salvar(Emprestimo emprestimo) {
+		
 		if (emprestimo.getId() != 0) {
 			System.out.println("aqui emprestimo update");
 			return persist.update(emprestimo);
