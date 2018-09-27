@@ -8,8 +8,12 @@ public class EmprestimoPersistencia {
 	
 	private static ArrayList<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
 	private LivroPersistencia lvpersist = new LivroPersistencia();
+	private MutuarioPersistencia mpersist = new MutuarioPersistencia();
 	
 	public Emprestimo insert(Emprestimo emprestimo) {
+		
+		emprestimo.setLivro(lvpersist.findId(emprestimo.getLivro().getId()));
+		emprestimo.setMutuario(mpersist.findId(emprestimo.getMutuario().getId()));
 	
 		emprestimo.setId(emprestimos.size());
 		emprestimo.setLivro(lvpersist.alterarStatus(emprestimo.getLivro().getId()));
