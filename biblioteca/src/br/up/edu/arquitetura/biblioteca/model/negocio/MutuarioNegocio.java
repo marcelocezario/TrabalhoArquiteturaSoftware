@@ -22,10 +22,10 @@ public class MutuarioNegocio {
 	public Mutuario salvar(Mutuario mutuario) {
 
 		if (mutuario.getId() == null) {
-			return persist.update(mutuario);
+			return persist.insert(mutuario);
 
 		} else {
-			return persist.insert(mutuario);
+			return persist.update(mutuario);
 		}
 	}
 
