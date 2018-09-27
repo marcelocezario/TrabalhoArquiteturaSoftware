@@ -26,7 +26,7 @@ public class EmprestimoPersistencia {
 		
 		Emprestimo aux = emprestimos.get(emprestimo.getId());
 		aux.setId(emprestimo.getId());
-		aux.setDataDevolucao(emprestimo.getDataDevolucao());
+		aux.setDataPrevistaDevolucao(emprestimo.getDataEmprestimo());
 		aux.setLivro(emprestimo.getLivro());
 		
 		return aux;
@@ -35,7 +35,7 @@ public class EmprestimoPersistencia {
 	public Emprestimo find (String data) {
 		Emprestimo emprestimoRetorno = null;
 		for (Emprestimo emprestimo : emprestimos) {
-			if (emprestimo.getDataDevolucao().equals(data)) {
+			if (emprestimo.getDataEmprestimo().equals(data)) {
 				emprestimoRetorno = emprestimo;
 			}
 		}
