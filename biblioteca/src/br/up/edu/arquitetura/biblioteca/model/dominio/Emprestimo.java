@@ -7,8 +7,9 @@ public class Emprestimo {
 	private int id;
 	private Livro livro;
 	private Mutuario mutuario;
-	private Date dataEmprestimo;
+	private Date dataEmprestimo = new Date();
 	private Date dataPrevistaDevolucao;
+	private Date dataDevolucao;
 
 	public Emprestimo() {
 	}
@@ -58,6 +59,14 @@ public class Emprestimo {
 
 	public void setDataPrevistaDevolucao(Date dataPrevistaDevolucao) {
 		this.dataPrevistaDevolucao = dataPrevistaDevolucao;
+	}
+
+	public Date getDataDevolucao() {
+		return dataDevolucao;
+	}
+
+	public void setDataDevolucao(Date dataDevolucao) {
+		this.dataDevolucao = dataDevolucao;
 	}
 	
 
