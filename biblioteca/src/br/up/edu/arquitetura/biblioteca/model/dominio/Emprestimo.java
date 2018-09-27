@@ -6,6 +6,7 @@ public class Emprestimo {
 	private Livro livro;
 	private Mutuario mutuario;
 	private String dataEmprestimo;
+	private String dataPrevistaDevolucao;
 	private String dataDevolucao;
 
 	public Emprestimo() {
