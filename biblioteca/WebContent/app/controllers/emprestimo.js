@@ -21,9 +21,9 @@ APP.controller('EmprestimoNovoController', function($scope, $state, $stateParams
 
 APP.controller('EmprestimoEditarController', function($scope, $state, $stateParams, EmprestimoService, MutuarioService, LivroService) {
   $scope.emprestimo = EmprestimoService.get({ id: $stateParams.id });
-  $scope.livros = LivroService.query();
   $scope.mutuarios = MutuarioService.query();
-
+  $scope.livros = LivroService.query();
+  
   $scope.atualizarEmprestimo = function() {
     $scope.emprestimo.$update(
       function() {
