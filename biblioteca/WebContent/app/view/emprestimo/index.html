@@ -13,21 +13,19 @@
 <table class="table table-bordered table-striped">
 
 	<thead>
-		<tr>
-			<th>Data do Emprestimo</th>
+	<tr>
 			<th>Data para Devolução</th>
 			<th>Mutuario</th>
 			<th>Livro</th>
-			<th>Ações</th>
+			<th>Editar</th>
+			<th>Devolver</th>
 		</tr>
 	</thead>
 	<tr ng-repeat="emprestimo in emprestimos">
-		<td>{{emprestimo.dataEmprestimo}}</td>
-		<td>{{emprestimo.dataDevolucao}}</td>
-		<td>{{emprestimo.mutuario.nome}}</td>
-		<td>{{emprestimo.livro.titulo}}</td>
 
 		<td><a class="btn btn-primary"
 			ui-sref="editarEmprestimo({ id: emprestimo.id })">Editar</a></td>
+		<td><a class="btn btn-primary"
+			ui-sref="devolverEmprestimo({ id: emprestimo.id })">Devolver</a></td>
 	</tr>
 </table>
