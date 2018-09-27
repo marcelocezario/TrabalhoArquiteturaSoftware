@@ -32,4 +32,8 @@ public class EmprestimoNegocio {
 	public List<Emprestimo> listarTodos() {
 		return persist.list();
 	}
+	
+	public void devolverEmprestimo(){
+		
+	}
 }
