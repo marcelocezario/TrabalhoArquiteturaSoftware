@@ -10,14 +10,15 @@ public class EmprestimoNegocio {
 	private EmprestimoPersistencia persist = new EmprestimoPersistencia();
 
 	public Emprestimo salvar(Emprestimo emprestimo) {
-
+		if(persist.validaMutuario(emprestimo)){
 		if (emprestimo.getId() == null) {
 			if (persist.verificaLivro(emprestimo)) {
 				persist.insert(emprestimo);
 				return emprestimo;
 			}
-		} else {
+		} else if(emprestimo.getDataDevolucao() != null){
 			return persist.devolucao(emprestimo);
+		}
 		}
 		return null;
 	}
@@ -31,6 +32,11 @@ public class EmprestimoNegocio {
 	}
 
 	public void devolverEmprestimo() {
+
+	}
+
+	public void devolver(Emprestimo emprestimo) {
+		System.out.println("deu certo o devolver");
 
 	}
 }

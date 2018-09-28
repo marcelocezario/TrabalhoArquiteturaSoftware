@@ -12,16 +12,16 @@ public class EmprestimoPersistencia {
 
 	private static ArrayList<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
 	private LivroPersistencia lvpersist = new LivroPersistencia();
-	private MutuarioPersistencia mpersist = new MutuarioPersistencia();
+	private MutuarioPersistencia mPersist = new MutuarioPersistencia();
 
 	public Emprestimo insert(Emprestimo emprestimo) {
 
 		emprestimo.setId(emprestimos.size());
-		//seta a data do sistema, não faz senido o usuario setar isso 
+		// seta a data do sistema, não faz senido o usuario setar isso
 		emprestimo.setDataEmprestimo(converteData(LocalDate.now().toString()));
 		emprestimo.setDataPrevistaDevolucao(converteData(emprestimo.getDataPrevistaDevolucao()));
 
-		emprestimo.setMutuario(mpersist.findId(emprestimo.getMutuario().getId()));
+		emprestimo.setMutuario(mPersist.findId(emprestimo.getMutuario().getId()));
 		emprestimo.setLivro(lvpersist.alterarStatus(emprestimo.getLivro().getId()));
 		emprestimos.add(emprestimo);
 
@@ -30,15 +30,21 @@ public class EmprestimoPersistencia {
 	}
 
 	public ArrayList<Emprestimo> list() {
-
-		return emprestimos;
+		ArrayList<Emprestimo> emprestados = new ArrayList<>();
+		for (Emprestimo emprestimo : emprestimos) {
+			if (emprestimo.getDataDevolucao() == null) {
+				emprestados.add(emprestimo);
+			}
+		}
+		return emprestados;
 	}
 
 	public Emprestimo devolucao(Emprestimo emprestimo) {
 
+		System.out.println("devolvel o livro huehuehuehuehue");
 		Emprestimo aux = emprestimos.get(emprestimo.getId());
 		aux.setId(emprestimo.getId());
-		aux.setDataDevolucao(emprestimo.getDataDevolucao());
+		aux.setDataDevolucao(converteData(emprestimo.getDataDevolucao()));
 		aux.setLivro(lvpersist.alterarStatus(emprestimo.getLivro().getId()));
 
 		return aux;
@@ -69,9 +75,9 @@ public class EmprestimoPersistencia {
 
 	protected String converteData(String string) {
 
-		SimpleDateFormat in= new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
-		 
+
 		try {
 			String result = out.format(in.parse(string));
 			return result;
@@ -80,6 +86,14 @@ public class EmprestimoPersistencia {
 			e.printStackTrace();
 		}
 		return null;
-		
+
+	}
+
+	public boolean validaMutuario(Emprestimo emprestimo) {
+
+		if (mPersist.qtdeLivroMutuario(emprestimo.getMutuario()).getQtdeLivro() == 1) {
+			return false;
+		}
+		return true;
 	}
 }
