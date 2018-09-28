@@ -53,16 +53,4 @@ public class EmprestimoPersistencia {
 		return emprestimos.get(id);	
 	}
 	
-	public ArrayList<Emprestimo> listarEmprestimosPendentesPorMutuario (Mutuario mutuario) {
-		ArrayList<Emprestimo> emprestimosMutuario = new ArrayList<Emprestimo>();
-		
-		for (Emprestimo emprestimo : emprestimos) {
-			if(emprestimo.getMutuario().getId().equals(mutuario.getId()) && emprestimo.getDataDevolucao() == null);
-			emprestimosMutuario.add(emprestimo);
-		}
-		
-		return emprestimosMutuario;
-		
-	}
-
 }

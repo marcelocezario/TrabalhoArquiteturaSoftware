@@ -50,13 +50,12 @@ public class LivroPersistencia {
 		return livros.get(id);	
 	}
 	
-	public Livro alterarStatus(int id) {
-		Livro aux = livros.get(id);
-		if(aux.isStatus()){			
-			aux.setStatus(false);
+	public void alterarStatus(int id) {
+		Livro livro = livros.get(id);
+		if(livro.isStatus()){			
+			livro.setStatus(false);
 		}else{
-			aux.setStatus(true);
+			livro.setStatus(true);
 		}		
-		return aux;
 	}
 }

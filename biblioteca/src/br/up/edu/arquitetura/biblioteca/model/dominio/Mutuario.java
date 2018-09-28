@@ -6,7 +6,16 @@ public class Mutuario {
 	private String nome;
 	private String endereco;
 	private String telefone;
+	private int qtdeEmprestimosAtivos;
 	
+	public int getQtdeEmprestimoAtivos() {
+		return qtdeEmprestimosAtivos;
+	}
+
+	public void setQtdeEmprestimosAtivos(int qtdeEmprestimosAtivos) {
+		this.qtdeEmprestimosAtivos = qtdeEmprestimosAtivos;
+	}
+
 	public Mutuario(){}
 	
 	public Mutuario(String nome, String endereco, String telefone){
@@ -38,7 +47,7 @@ public class Mutuario {
 	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

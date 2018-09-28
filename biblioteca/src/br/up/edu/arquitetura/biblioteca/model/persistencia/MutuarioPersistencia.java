@@ -2,8 +2,8 @@ package br.up.edu.arquitetura.biblioteca.model.persistencia;
 
 import java.util.ArrayList;
 
-
-		import br.up.edu.arquitetura.biblioteca.model.dominio.Mutuario;
+import br.up.edu.arquitetura.biblioteca.model.dominio.Livro;
+import br.up.edu.arquitetura.biblioteca.model.dominio.Mutuario;
 
 public class MutuarioPersistencia {
 	
@@ -46,6 +46,22 @@ public class MutuarioPersistencia {
 	public Mutuario findId(int id) {
 		// busca pelo id
 		return mutuarios.get(id);	
+	}
+	
+	public void adicionarEmprestimo (int idMutuario) {
+		
+		Mutuario mutuario = mutuarios.get(idMutuario);
+		
+		mutuario.setQtdeEmprestimosAtivos(mutuario.getQtdeEmprestimoAtivos() + 1);
+
+	}
+	
+	public void subtrairEmprestimo (int idMutuario) {
+		
+		Mutuario mutuario = mutuarios.get(idMutuario);
+		
+		mutuario.setQtdeEmprestimosAtivos(mutuario.getQtdeEmprestimoAtivos() - 1);
+
 	}
 
 

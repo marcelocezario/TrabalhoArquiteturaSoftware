@@ -9,11 +9,16 @@ import java.util.List;
 import br.up.edu.arquitetura.biblioteca.model.dominio.Emprestimo;
 import br.up.edu.arquitetura.biblioteca.model.dominio.Livro;
 import br.up.edu.arquitetura.biblioteca.model.dominio.Mutuario;
-import br.up.edu.arquitetura.biblioteca.model.persistencia.EmprestimoPersistencia;;
+import br.up.edu.arquitetura.biblioteca.model.persistencia.EmprestimoPersistencia;
+import br.up.edu.arquitetura.biblioteca.model.persistencia.LivroPersistencia;
+import br.up.edu.arquitetura.biblioteca.model.persistencia.MutuarioPersistencia;;
 
 public class EmprestimoNegocio {
 
 	private EmprestimoPersistencia persist = new EmprestimoPersistencia();
+	private LivroPersistencia lvpersist = new LivroPersistencia();
+	private MutuarioPersistencia mpersist = new MutuarioPersistencia();
+
 
 	public Emprestimo salvar(Emprestimo emprestimo) throws Exception {
 		
@@ -21,11 +26,15 @@ public class EmprestimoNegocio {
 			if (emprestimo.getId() == null) {
 				
 				novoEmprestimo(emprestimo);
+				lvpersist.alterarStatus(emprestimo.getLivro().getId());
+				mpersist.adicionarEmprestimo(emprestimo.getMutuario().getId());
 				
 				return persist.insert(emprestimo);
 			} if (emprestimo.getDataDevolucao() != null){
 				
 				devolverEmprestimo(emprestimo);
+				lvpersist.alterarStatus(emprestimo.getLivro().getId());
+				mpersist.subtrairEmprestimo(emprestimo.getMutuario().getId());
 				
 				return persist.update(emprestimo);
 
@@ -83,16 +92,8 @@ public class EmprestimoNegocio {
 	
 	private boolean validaEmprestimo(Emprestimo emprestimo) {
 		
-		boolean novoEmprestimo;
-		
-		if (emprestimo.getId() == null) {
-			novoEmprestimo = true;
-		} else {
-			novoEmprestimo = false;
-		}
-		
-		if (validaMutuario(emprestimo.getMutuario(), novoEmprestimo)) {
-			if (validaLivro (emprestimo.getLivro())) {
+		if (validaMutuario(emprestimo.getMutuario())) {
+			if (validaLivro(emprestimo.getLivro())) {
 				return true;
 			}
 		}
@@ -102,24 +103,22 @@ public class EmprestimoNegocio {
 
 	private boolean validaLivro(Livro livro) {
 		
+		if (livro.isStatus())
+			return false;
 		return true;
 	}
 
-	private boolean validaMutuario(Mutuario mutuario, boolean novoEmprestimo) {
+	private boolean validaMutuario(Mutuario mutuario) {
 		
-		ArrayList<Emprestimo> emprestimosMutuario = persist.listarEmprestimosPendentesPorMutuario(mutuario);
+		int nrMaxEmprPorMutuario = 1;
 		
-		for (Emprestimo emprestimo : emprestimosMutuario) {
-			System.out.println(emprestimo.getLivro());
-			
-		}
-		
-		if (emprestimosMutuario.size() == 0) {
-			return true;
-		} if (emprestimosMutuario.size() == 1 && novoEmprestimo == false) {
+		if (mutuario.getQtdeEmprestimoAtivos() <= nrMaxEmprPorMutuario) {
 			return true;
 		}
+		
 		return false;
 	}
+	
+	
 	
 }
