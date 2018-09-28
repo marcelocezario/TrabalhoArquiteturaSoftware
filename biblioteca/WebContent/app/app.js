@@ -69,7 +69,11 @@ var APP = angular.module('livroApp', ['ui.router', 'ngResource'])
           url: '/emprestimos/:id/editar',
           templateUrl: 'app/view/emprestimo/editar.html',
           controller: 'EmprestimoEditarController'
-        });
+        }).state('devolverEmprestimo', {
+            url: '/emprestimos/:id/devolver',
+            templateUrl: 'app/view/emprestimo/devolver.html',
+            controller: 'EmprestimoDevolverController'
+          });
   }).run(function($state) {
     $state.go('autores');
   });

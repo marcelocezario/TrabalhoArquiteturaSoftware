@@ -11,18 +11,11 @@ public class EmprestimoNegocio {
 
 	public Emprestimo salvar(Emprestimo emprestimo) {
 		
-		if (emprestimo.getId() != 0) {
-			System.out.println("aqui emprestimo update");
+		if (emprestimo.getId() == null) {
+			return persist.insert(emprestimo);
+		} else {
 			return persist.update(emprestimo);
-		} else if (persist.verificaLivro(emprestimo)) {
-			if (persist.insert(emprestimo) != null) {
-				System.out.println("aqui emprestimo insert ");
-				return emprestimo;
-			} else {
-				return null;
-			}
 		}
-		return null;
 	}
 
 	public Emprestimo findId(int id) {
