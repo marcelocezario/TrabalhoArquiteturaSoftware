@@ -4,7 +4,8 @@
 </div>
 
 <div class="form-group">
-  <label for="dataDevolucao">Devolução</label>
-  <input name="dataDevolucao" ng-model="emprestimo.dataDevolucao" class="form-control "data-mask-selectonfocus="true"  placeholder="Ex.: dd/mm/aaaa" ng-required="true" data-mask="00/00/0000" maxlength="10"  type="date">
+  <label for="dataDevolucao">Data para Devolucao</label>
+  <input type="date" class="form-control" id="dataDevolucao" placeholder="Data da Devolucao" ng-model="emprestimo.dataDevolucao" ng-required="true">
 </div>
-<button type="submit" class="btn btn-default">Devolver</button>
+
+<button type="submit" class="btn btn-default">Salvar</button>

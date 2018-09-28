@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import br.up.edu.arquitetura.biblioteca.model.dominio.Livro;
 import br.up.edu.arquitetura.biblioteca.model.persistencia.LivroPersistencia;
+import br.up.edu.arquitetura.biblioteca.model.dominio.Autor;;
 
 public class LivroNegocio {
 

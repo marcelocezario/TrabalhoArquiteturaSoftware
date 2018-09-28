@@ -6,7 +6,6 @@ public class Mutuario {
 	private String nome;
 	private String endereco;
 	private String telefone;
-	private Integer qtdeLivro;
 	
 	public Mutuario(){}
 	
@@ -36,23 +35,11 @@ public class Mutuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
 	public Integer getId() {
 		return id;
 	}
-
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Integer getQtdeLivro() {
-		return qtdeLivro;
-	}
-
-	public void setQtdeLivro(Integer qtdeLivro) {
-		this.qtdeLivro = qtdeLivro;
-	}
-
-	
-	
 }

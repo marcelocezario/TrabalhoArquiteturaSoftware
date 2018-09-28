@@ -4,9 +4,14 @@
 </div>
 
 <div class="form-group">
-  <label for="dataPrevistaDevolucao">Data para Devolução</label>
-  <input name="dataPrevistaDevolucao" ng-required="true" ng-model="emprestimo.dataPrevistaDevolucao"  class="form-control "data-mask-selectonfocus="true"  placeholder="Ex.: dd/mm/aaaa" data-mask="00/00/0000" maxlength="10"  type="date">
+  <label for="dataEmprestimo">Data do Emprestimo</label>
+  <input type="date" class="form-control" id="dataEmprestimo" placeholder="Data do Emprestimo" ng-model="emprestimo.dataEmprestimo" ng-required="true">
 </div>
+<div class="form-group">
+  <label for="dataDevolucao">Data Prevista para Devolução</label>
+  <input type="date" class="form-control" id="dataPrevistaDevolucao" placeholder="Data para Devolucao" ng-model="emprestimo.dataPrevistaDevolucao" ng-required="true">
+</div>
+
 <div class="form-group">
   <label for="livro">Livro</label>
   <select class="form-control" id="livro" ng-model="emprestimo.livro.id" ng-options="obj.id as obj.titulo for obj in livros" ng-required="true"></select>
@@ -17,6 +22,9 @@
 </div>
 
 <button type="submit" class="btn btn-default">Salvar</button>
+
+
+
 
 
 

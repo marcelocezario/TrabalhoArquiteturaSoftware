@@ -14,8 +14,9 @@
 
 	<thead>
 		<tr>
-			<th>Data de emprestimo</th>		
-			<th>Data para Devolução</th>
+			<th>Data Emprestimo</th>
+			<th>Data prevista Devolucao</th>
+			<th>Data da Devolucao</th>
 			<th>Mutuario</th>
 			<th>Livro</th>
 			<th>Editar</th>
@@ -26,14 +27,13 @@
 	<tr ng-repeat="emprestimo in emprestimos">
 		<td>{{emprestimo.dataEmprestimo}}</td>
 		<td>{{emprestimo.dataPrevistaDevolucao}}</td>
+		<td>{{emprestimo.dataDevolucao}}</td>
 		<td>{{emprestimo.mutuario.nome}}</td>
 		<td>{{emprestimo.livro.titulo}}</td>
 
 		<td><a class="btn btn-primary"
 			ui-sref="editarEmprestimo({ id: emprestimo.id })">Editar</a></td>
-			
-		<td><a class="btn btn-primary"
+		<td><a class="btn btn-danger"
 			ui-sref="devolverEmprestimo({ id: emprestimo.id })">Devolver</a></td>
 	</tr>
 </table>
-

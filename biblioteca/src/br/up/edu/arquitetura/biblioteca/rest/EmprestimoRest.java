@@ -54,10 +54,11 @@ public class EmprestimoRest {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response insert(Emprestimo emprestimo, @Context UriInfo uriInfo) throws Exception {
 
-		String id = "" + bc.salvar(emprestimo).getId();
-		URI location = uriInfo.getRequestUriBuilder().path(id).build();
+			String id = "" + bc.salvar(emprestimo).getId();
+			URI location = uriInfo.getRequestUriBuilder().path(id).build();
 
-		return Response.created(location).entity(id).build();
+			return Response.created(location).entity(id).build();
+	
 	}
 
 	@PUT
@@ -66,9 +67,7 @@ public class EmprestimoRest {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public void update(@PathParam("id") int id, Emprestimo emprestimo) throws Exception {
 
-		System.out.println("ffffffffffffAqui");
 		emprestimo.setId(id);
 		bc.salvar(emprestimo);
 	}
-
 }
