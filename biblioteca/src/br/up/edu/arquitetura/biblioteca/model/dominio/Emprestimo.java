@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Emprestimo {
 
-	private int id;
+	private Integer id;
 	private Livro livro;
 	private Mutuario mutuario;
 	private Date dataEmprestimo = new Date();
@@ -21,7 +21,7 @@ public class Emprestimo {
 		this.mutuario = mutuario;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

@@ -34,3 +34,19 @@ APP.controller('EmprestimoEditarController', function($scope, $state, $statePara
     );
   };
 });
+
+APP.controller('EmprestimoDevolverController', function($scope, $state, $stateParams, EmprestimoService, MutuarioService, LivroService) {
+	  $scope.emprestimo = EmprestimoService.get({ id: $stateParams.id });
+	  $scope.mutuarios = MutuarioService.query();
+	  $scope.livros = LivroService.query();
+	  
+	  $scope.atualizarEmprestimo = function() {
+	    $scope.emprestimo.$update(
+	      function() {
+	        $state.go('emprestimos', {'successMessage': "emprestimo atualizado com sucesso!"});
+	      }, function() {
+	        $scope.errorMessage = "Ocorreu um erro no servidor. Verifique se todos os campos foram preenchidos corretamente.";
+	      }
+	    );
+	  };
+	});

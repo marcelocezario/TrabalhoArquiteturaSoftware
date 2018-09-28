@@ -1,6 +1,6 @@
 package br.up.edu.arquitetura.biblioteca.model.persistencia;
 
-import java.util.ArrayList;
+import java.util.ArrayList;import org.omg.CORBA.PERSIST_STORE;
 
 import br.up.edu.arquitetura.biblioteca.model.dominio.Emprestimo;
 
@@ -28,10 +28,11 @@ public class EmprestimoPersistencia {
 	
 	public Emprestimo update (Emprestimo emprestimo) {
 		
-		Emprestimo aux = emprestimos.get(emprestimo.getId());
-		aux.setId(emprestimo.getId());
-		aux.setDataPrevistaDevolucao(emprestimo.getDataEmprestimo());
-		aux.setLivro(emprestimo.getLivro());
+		Emprestimo aux = findId(emprestimo.getId());
+		aux.setDataEmprestimo(emprestimo.getDataDevolucao());
+		aux.setDataPrevistaDevolucao(emprestimo.getDataPrevistaDevolucao());
+		aux.setLivro(lvpersist.findId(emprestimo.getLivro().getId()));
+		aux.setMutuario(mpersist.findId(emprestimo.getLivro().getId()));
 		
 		return aux;
 	}
