@@ -15,6 +15,7 @@ public class EmprestimoPersistencia {
 	public Emprestimo insert(Emprestimo emprestimo) {
 		
 		emprestimo.setId(emprestimos.size());
+		emprestimo.setId(emprestimos.size());		
 		emprestimo.setLivro(lvpersist.findId(emprestimo.getLivro().getId()));
 		emprestimo.setMutuario(mpersist.findId(emprestimo.getMutuario().getId()));
 		emprestimo.setLivro(lvpersist.alterarStatus(emprestimo.getLivro().getId()));
@@ -24,7 +25,13 @@ public class EmprestimoPersistencia {
 	}
 	
 	public ArrayList<Emprestimo> list(){
-		return emprestimos;
+		ArrayList<Emprestimo> aDevolver = new ArrayList<Emprestimo>();
+		for (Emprestimo emprestimo : emprestimos) {
+			if(emprestimo.getDataDevolucao() == null){
+				aDevolver.add(emprestimo);
+			}
+		}
+		return aDevolver;
 	}
 	
 	public Emprestimo update (Emprestimo emprestimo) {
