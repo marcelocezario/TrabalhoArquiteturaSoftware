@@ -1,21 +1,19 @@
 package br.up.edu.arquitetura.biblioteca.model.dominio;
 
-import java.time.LocalDate;
-import java.util.Date;
 
 public class Emprestimo {
 
 	private Integer id;
 	private Livro livro;
 	private Mutuario mutuario;
-	private Date dataEmprestimo ;
-	private Date dataPrevistaDevolucao;
-	private Date dataDevolucao;
+	private String dataEmprestimo ;
+	private String dataPrevistaDevolucao;
+	private String dataDevolucao = null;
 
 	public Emprestimo() {
 	}
 
-	public Emprestimo(Date dataEmprestimo, Date dataPrevistaDevolucao, Livro livro, Mutuario mutuario) {
+	public Emprestimo(String dataEmprestimo, String dataPrevistaDevolucao, Livro livro, Mutuario mutuario) {
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataPrevistaDevolucao = dataPrevistaDevolucao;
 		this.livro = livro;
@@ -47,28 +45,28 @@ public class Emprestimo {
 		this.mutuario = mutuario;
 	}
 
-	public Date getDataEmprestimo() {
+	public String getDataEmprestimo() {
 		return dataEmprestimo;
 	}
 
-	public void setDataEmprestimo(Date dataEmprestimo) {
+	public void setDataEmprestimo(String dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
 
-	public Date getDataPrevistaDevolucao() {
-		return dataPrevistaDevolucao;
-	}
-
-	public void setDataPrevistaDevolucao(Date dataPrevistaDevolucao) {
-		this.dataPrevistaDevolucao = dataPrevistaDevolucao;
-	}
-
-	public Date getDataDevolucao() {
+	public String getDataDevolucao() {
 		return dataDevolucao;
 	}
 
-	public void setDataDevolucao(Date dataDevolucao) {
+	public void setDataDevolucao(String dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
+	}
+
+	public String getDataPrevistaDevolucao() {
+		return dataPrevistaDevolucao;
+	}
+
+	public void setDataPrevistaDevolucao(String dataPrevistaDevolucao) {
+		this.dataPrevistaDevolucao = dataPrevistaDevolucao;
 	}
 	
 

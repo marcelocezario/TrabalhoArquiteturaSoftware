@@ -13,6 +13,7 @@ public class EmprestimoNegocio {
 
 		if (emprestimo.getId() == null) {
 			if (persist.verificaLivro(emprestimo)) {
+				persist.insert(emprestimo);
 				return emprestimo;
 			}
 		} else {

@@ -1,6 +1,7 @@
 var APP = angular.module('livroApp', ['ui.router', 'ngResource'])
+	
   .config(function ($stateProvider) {
-
+	  
     $stateProvider.state('principal', {
       url: '/principal',
       templateUrl: 'app/view/home.html',
