@@ -10,12 +10,15 @@ public class EmprestimoNegocio {
 	private EmprestimoPersistencia persist = new EmprestimoPersistencia();
 
 	public Emprestimo salvar(Emprestimo emprestimo) {
-		
+
 		if (emprestimo.getId() == null) {
-			return persist.insert(emprestimo);
+			if (persist.verificaLivro(emprestimo)) {
+				return emprestimo;
+			}
 		} else {
-			return persist.update(emprestimo);
+			return persist.devolucao(emprestimo);
 		}
+		return null;
 	}
 
 	public Emprestimo findId(int id) {
@@ -25,8 +28,8 @@ public class EmprestimoNegocio {
 	public List<Emprestimo> listarTodos() {
 		return persist.list();
 	}
-	
-	public void devolverEmprestimo(){
-		
+
+	public void devolverEmprestimo() {
+
 	}
 }

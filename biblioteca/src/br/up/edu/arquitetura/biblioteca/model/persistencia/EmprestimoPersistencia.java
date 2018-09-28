@@ -47,7 +47,7 @@ public class EmprestimoPersistencia {
 		return aDevolver;
 	}
 	
-	public Emprestimo devolucso (Emprestimo emprestimo) {
+	public Emprestimo devolucao (Emprestimo emprestimo) {
 		
 		Emprestimo aux = emprestimos.get(emprestimo.getId());
 		aux.setId(emprestimo.getId());
