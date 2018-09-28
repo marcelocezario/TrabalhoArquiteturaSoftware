@@ -26,15 +26,12 @@ public class EmprestimoNegocio {
 			if (emprestimo.getId() == null) {
 				
 				novoEmprestimo(emprestimo);
-				lvpersist.alterarStatus(emprestimo.getLivro().getId());
-				mpersist.adicionarEmprestimo(emprestimo.getMutuario().getId());
 				
 				return persist.insert(emprestimo);
 			} if (emprestimo.getDataDevolucao() != null){
 				
 				devolverEmprestimo(emprestimo);
-				lvpersist.alterarStatus(emprestimo.getLivro().getId());
-				mpersist.subtrairEmprestimo(emprestimo.getMutuario().getId());
+				
 				
 				return persist.update(emprestimo);
 
@@ -61,11 +58,15 @@ public class EmprestimoNegocio {
 
 		emprestimo.setDataEmprestimo(converteData(LocalDate.now().toString()));
 		emprestimo.setDataPrevistaDevolucao(converteData(emprestimo.getDataPrevistaDevolucao().toString()));
+		lvpersist.alterarStatus(emprestimo.getLivro().getId());
+		mpersist.adicionarEmprestimo(emprestimo.getMutuario().getId());
 	}
 	
 	private void devolverEmprestimo(Emprestimo emprestimo){
 		
 		emprestimo.setDataDevolucao(converteData(emprestimo.getDataDevolucao().toString()));
+		lvpersist.alterarStatus(emprestimo.getLivro().getId());
+		mpersist.subtrairEmprestimo(emprestimo.getMutuario().getId());
 	}
 	
 	private void editarEmprestimo(Emprestimo emprestimo) {
@@ -92,8 +93,8 @@ public class EmprestimoNegocio {
 	
 	private boolean validaEmprestimo(Emprestimo emprestimo) {
 		
-		if (validaMutuario(emprestimo.getMutuario())) {
-			if (validaLivro(emprestimo.getLivro())) {
+		if (validaMutuario(emprestimo.getMutuario().getId())) {
+			if (validaLivro(emprestimo.getLivro().getId())) {
 				return true;
 			}
 		}
@@ -101,14 +102,18 @@ public class EmprestimoNegocio {
 		return false;
 	}
 
-	private boolean validaLivro(Livro livro) {
+	private boolean validaLivro(int idLivro) {
+		
+		Livro livro = lvpersist.findId(idLivro);
 		
 		if (livro.isStatus())
 			return false;
 		return true;
 	}
 
-	private boolean validaMutuario(Mutuario mutuario) {
+	private boolean validaMutuario(int idMutuario) {
+		
+		Mutuario mutuario = mpersist.findId(idMutuario);
 		
 		int nrMaxEmprPorMutuario = 1;
 		

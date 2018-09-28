@@ -6,7 +6,7 @@ public class Mutuario {
 	private String nome;
 	private String endereco;
 	private String telefone;
-	private int qtdeEmprestimosAtivos;
+	private int qtdeEmprestimosAtivos = 0;
 	
 	public int getQtdeEmprestimoAtivos() {
 		return qtdeEmprestimosAtivos;

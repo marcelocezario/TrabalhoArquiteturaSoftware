@@ -14,11 +14,9 @@ public class EmprestimoPersistencia {
 	
 	public Emprestimo insert(Emprestimo emprestimo) {
 		
-		emprestimo.setId(emprestimos.size());
 		emprestimo.setId(emprestimos.size());		
 		emprestimo.setLivro(lvpersist.findId(emprestimo.getLivro().getId()));
 		emprestimo.setMutuario(mpersist.findId(emprestimo.getMutuario().getId()));
-		emprestimo.setLivro(lvpersist.alterarStatus(emprestimo.getLivro().getId()));
 		emprestimos.add(emprestimo);
 		
 		return emprestimos.get(emprestimo.getId());

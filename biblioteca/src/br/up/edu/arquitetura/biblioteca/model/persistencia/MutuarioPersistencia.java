@@ -53,7 +53,6 @@ public class MutuarioPersistencia {
 		Mutuario mutuario = mutuarios.get(idMutuario);
 		
 		mutuario.setQtdeEmprestimosAtivos(mutuario.getQtdeEmprestimoAtivos() + 1);
-
 	}
 	
 	public void subtrairEmprestimo (int idMutuario) {
