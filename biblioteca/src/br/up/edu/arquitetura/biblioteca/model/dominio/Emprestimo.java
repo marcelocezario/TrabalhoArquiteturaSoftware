@@ -1,13 +1,14 @@
 package br.up.edu.arquitetura.biblioteca.model.dominio;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Emprestimo {
 
-	private int id;
+	private Integer id;
 	private Livro livro;
 	private Mutuario mutuario;
-	private Date dataEmprestimo = new Date();
+	private Date dataEmprestimo ;
 	private Date dataPrevistaDevolucao;
 	private Date dataDevolucao;
 
@@ -21,11 +22,12 @@ public class Emprestimo {
 		this.mutuario = mutuario;
 	}
 
-	public int getId() {
+	
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
