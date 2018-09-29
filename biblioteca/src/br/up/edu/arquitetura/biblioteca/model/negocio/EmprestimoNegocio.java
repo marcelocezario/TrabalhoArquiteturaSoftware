@@ -22,16 +22,20 @@ public class EmprestimoNegocio {
 	public Emprestimo salvar(Emprestimo emprestimo) throws Exception {
 
 		if (emprestimo.getId() == null) {
-			novoEmprestimo(emprestimo);
-
-			return persist.insert(emprestimo);
+			if (novoEmprestimo(emprestimo))
+				return persist.insert(emprestimo);
 		}
 		if (emprestimo.getDataDevolucao() != null) {
+
 			devolverEmprestimo(emprestimo);
+			lvnegocio.alterarStatus(emprestimo.getLivro().getId());
+			mnegocio.subtrairEmprestimo(emprestimo.getMutuario().getId());
 
 			return persist.update(emprestimo);
+
 		} else {
-			renovarEmprestimo(emprestimo);
+
+			editarEmprestimo(emprestimo);
 
 			return persist.update(emprestimo);
 		}
@@ -45,22 +49,24 @@ public class EmprestimoNegocio {
 		return persist.list();
 	}
 
-	private void novoEmprestimo(Emprestimo emprestimo) {
+	private boolean novoEmprestimo(Emprestimo emprestimo) {
 
-		emprestimo.setDataEmprestimo(converteData(LocalDate.now().toString()));
-		emprestimo.setDataPrevistaDevolucao(converteData(emprestimo.getDataPrevistaDevolucao().toString()));
-		lvnegocio.alterarStatus(emprestimo.getLivro().getId());
-		mnegocio.adicionarEmprestimo(emprestimo.getMutuario().getId());
+		if (validaLivro(emprestimo.getLivro().getId())) {
+			emprestimo.setDataEmprestimo(converteData(LocalDate.now().toString()));
+			emprestimo.setDataPrevistaDevolucao(converteData(emprestimo.getDataPrevistaDevolucao().toString()));
+			alterarStatusLivro(emprestimo.getLivro().getId());
+			
+			return true;
+		}
+		return false;
 	}
 
 	private void devolverEmprestimo(Emprestimo emprestimo) {
 
 		emprestimo.setDataDevolucao(converteData(emprestimo.getDataDevolucao().toString()));
-		lvnegocio.alterarStatus(emprestimo.getLivro().getId());
-//		mnegocio.subtrairEmprestimo(emprestimo.getMutuario().getId());
 	}
 
-	private void renovarEmprestimo(Emprestimo emprestimo) {
+	private void editarEmprestimo(Emprestimo emprestimo) {
 
 		emprestimo.setDataPrevistaDevolucao(converteData(emprestimo.getDataPrevistaDevolucao().toString()));
 	}
@@ -83,45 +89,37 @@ public class EmprestimoNegocio {
 
 	private boolean validaEmprestimo(Emprestimo emprestimo) {
 
-		boolean novoEmprestimo;
-
-		if (emprestimo.getId() == null)
-			novoEmprestimo = true;
-		else
-			novoEmprestimo = false;
-
-		if (validaMutuario(emprestimo.getMutuario().getId(), novoEmprestimo)) {
-			if (validaLivro(emprestimo.getLivro().getId(), novoEmprestimo)) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	private boolean validaLivro(int idLivro, boolean novoEmprestimo) {
-		/*
-		 * Livro livro = lvnegocio.findId(idLivro);
-		 * 
-		 * if (livro.isStatus()) return false; else if (novoEmprestimo) return false;
-		 */ return true;
-	}
-
-	private boolean validaMutuario(int idMutuario, boolean novoEmprestimo) {
-
-		/*
-		 * Mutuario mutuario = mnegocio.findId(idMutuario);
-		 * 
-		 * int nrMaxEmprPorMutuario = 1;
-		 * 
-		 * if (mutuario.getQtdeEmprestimoAtivos() < nrMaxEmprPorMutuario) { return true;
-		 * } else if (mutuario.getQtdeEmprestimoAtivos() == nrMaxEmprPorMutuario &&
-		 * novoEmprestimo == false) { return true; }
-		 * 
-		 * return false;
-		 */
 		return true;
 
+//		if (validaMutuario(emprestimo.getMutuario())) {
+//			if (validaLivro(emprestimo.getLivro())) {
+//				return true;
+//			}
+//		}
+//
+//		return false;
 	}
+
+	private boolean validaLivro(int idLivro) {
+
+		return lvnegocio.validaLivro(idLivro);
+
+	}
+
+	private void alterarStatusLivro(int idLivro) {
+
+		lvnegocio.alterarStatus(idLivro);
+	}
+
+//	private boolean validaMutuario(Mutuario mutuario) {
+//		
+//		int nrMaxEmprPorMutuario = 1;
+//		
+//		if (mutuario.getQtdeEmprestimoAtivos() <= nrMaxEmprPorMutuario) {
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 
 }

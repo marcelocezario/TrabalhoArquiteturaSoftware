@@ -11,7 +11,6 @@ public class LivroNegocio {
 	private LivroPersistencia persist = new LivroPersistencia();
 	private AutorNegocio autorBC = new AutorNegocio();
 
-	
 	public ArrayList<Livro> listarTodos() {
 		System.out.println("lista");
 
@@ -35,15 +34,28 @@ public class LivroNegocio {
 	public Livro findId(int id) {
 		return persist.findId(id);
 	}
-	
+
 	public void load() {
 		if (listarTodos().size() == 0) {
 			salvar(new Livro("Testando 1", 200, "Apenas um teste", autorBC.findId(0), false));
 			salvar(new Livro("Testando 2", 400, "Esse é outro teste", autorBC.findId(1), false));
 		}
 	}
-	
-	public void alterarStatus(int idLivro) {
-		persist.alterarStatus(idLivro);
+
+	public void alterarStatus(Integer idLivro) {
+		Livro livro = persist.findId(idLivro);
+
+		if (livro.isStatus())
+			livro.setStatus(false);
+		else
+			livro.setStatus(true);
+	}
+
+	public boolean validaLivro(int idLivro) {
+		Livro livro = persist.findId(idLivro);
+
+		if (livro.isStatus())
+			return false;
+		return true;
 	}
 }

@@ -6,7 +6,8 @@ public class Mutuario {
 	private String nome;
 	private String endereco;
 	private String telefone;
-	private int qtdeEmprestimosAtivos = 0;
+	private int qtdeEmprestimosAtivos;
+	
 
 	public Mutuario(){}
 	
@@ -14,7 +15,6 @@ public class Mutuario {
 		this.nome = nome;
 		this.endereco = endereco;
 		this.telefone = telefone;
-		this.qtdeEmprestimosAtivos = qtdeEmprestimosAtivos;
 	}
 	
 	public String getNome() {
@@ -43,12 +43,14 @@ public class Mutuario {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getQtdeEmprestimoAtivos() {
+
+	public int getQtdeEmprestimosAtivos() {
 		return qtdeEmprestimosAtivos;
 	}
 
 	public void setQtdeEmprestimosAtivos(int qtdeEmprestimosAtivos) {
 		this.qtdeEmprestimosAtivos = qtdeEmprestimosAtivos;
 	}
+
 
 }

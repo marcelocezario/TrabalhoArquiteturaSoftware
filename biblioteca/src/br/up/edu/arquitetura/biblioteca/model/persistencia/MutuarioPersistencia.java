@@ -52,23 +52,20 @@ public class MutuarioPersistencia {
 		
 		Mutuario mutuario = mutuarios.get(idMutuario);
 		
-		mutuario.setId(mutuario.getId());
-		mutuario.setNome(mutuario.getNome());
-		mutuario.setEndereco(mutuario.getEndereco());
-		mutuario.setTelefone(mutuario.getTelefone());
-		mutuario.setQtdeEmprestimosAtivos(mutuario.getQtdeEmprestimoAtivos() + 1);
+		mutuario.setQtdeEmprestimosAtivos(mutuario.getQtdeEmprestimosAtivos() + 1);
+
 	}
 	
 	public void subtrairEmprestimo (int idMutuario) {
 		
 		Mutuario mutuario = mutuarios.get(idMutuario);
 		
-		mutuario.setId(mutuario.getId());
-		mutuario.setNome(mutuario.getNome());
-		mutuario.setEndereco(mutuario.getEndereco());
-		mutuario.setTelefone(mutuario.getTelefone());
-		mutuario.setQtdeEmprestimosAtivos(mutuario.getQtdeEmprestimoAtivos() - 1);
+		mutuario.setQtdeEmprestimosAtivos(mutuario.getQtdeEmprestimosAtivos() - 1);
 
 	}
+
+
+	
+
 	
 }

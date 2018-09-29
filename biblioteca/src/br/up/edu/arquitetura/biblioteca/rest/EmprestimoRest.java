@@ -66,7 +66,6 @@ public class EmprestimoRest {
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public void update(@PathParam("id") int id, Emprestimo emprestimo) throws Exception {
-		
 
 		emprestimo.setId(id);
 		bc.salvar(emprestimo);
