@@ -52,11 +52,15 @@ public class EmprestimoNegocio {
 	private boolean novoEmprestimo(Emprestimo emprestimo) {
 
 		if (validaLivro(emprestimo.getLivro().getId())) {
-			emprestimo.setDataEmprestimo(converteData(LocalDate.now().toString()));
-			emprestimo.setDataPrevistaDevolucao(converteData(emprestimo.getDataPrevistaDevolucao().toString()));
-			alterarStatusLivro(emprestimo.getLivro().getId());
-			
-			return true;
+			if (validaMutuario(emprestimo.getMutuario().getId())) {
+
+				emprestimo.setDataEmprestimo(converteData(LocalDate.now().toString()));
+				emprestimo.setDataPrevistaDevolucao(converteData(emprestimo.getDataPrevistaDevolucao().toString()));
+				alterarStatusLivro(emprestimo.getLivro().getId());
+				adicionarEmprestimoMutuario(emprestimo.getMutuario().getId());
+				
+				return true;
+			}
 		}
 		return false;
 	}
@@ -65,6 +69,7 @@ public class EmprestimoNegocio {
 
 		emprestimo.setDataDevolucao(converteData(emprestimo.getDataDevolucao().toString()));
 		alterarStatusLivro(emprestimo.getLivro().getId());
+		subtrairEmprestimoMutuario(emprestimo.getMutuario().getId());
 	}
 
 	private void editarEmprestimo(Emprestimo emprestimo) {
@@ -88,19 +93,6 @@ public class EmprestimoNegocio {
 
 	}
 
-	private boolean validaEmprestimo(Emprestimo emprestimo) {
-
-		return true;
-
-//		if (validaMutuario(emprestimo.getMutuario())) {
-//			if (validaLivro(emprestimo.getLivro())) {
-//				return true;
-//			}
-//		}
-//
-//		return false;
-	}
-
 	private boolean validaLivro(int idLivro) {
 
 		return lvnegocio.validaLivro(idLivro);
@@ -112,15 +104,24 @@ public class EmprestimoNegocio {
 		lvnegocio.alterarStatus(idLivro);
 	}
 
-//	private boolean validaMutuario(Mutuario mutuario) {
-//		
-//		int nrMaxEmprPorMutuario = 1;
-//		
-//		if (mutuario.getQtdeEmprestimoAtivos() <= nrMaxEmprPorMutuario) {
-//			return true;
-//		}
-//		
-//		return false;
-//	}
+	private boolean validaMutuario (int idMutuario) {
+		
+		int qtdeMax = 1;
+		
+		Mutuario mutuario = mnegocio.findId(idMutuario);
+		
+		if (mutuario.getQtdeEmprestimosAtivos() < qtdeMax)
+			return true;
+		
+		return false;
+	}
+	
+	private void adicionarEmprestimoMutuario(int idMutuario) {
+		mnegocio.adicionarEmprestimo(idMutuario);
+	}
+	
+	private void subtrairEmprestimoMutuario(int idMutuario) {
+		mnegocio.subtrairEmprestimo(idMutuario);
+	}
 
 }
