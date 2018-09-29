@@ -16,34 +16,25 @@ import br.up.edu.arquitetura.biblioteca.model.persistencia.MutuarioPersistencia;
 public class EmprestimoNegocio {
 
 	private EmprestimoPersistencia persist = new EmprestimoPersistencia();
-	private LivroPersistencia lvpersist = new LivroPersistencia();
-	private MutuarioPersistencia mpersist = new MutuarioPersistencia();
-
+	private LivroNegocio lvnegocio = new LivroNegocio();
+	private MutuarioNegocio mnegocio = new MutuarioNegocio();
 
 	public Emprestimo salvar(Emprestimo emprestimo) throws Exception {
-		
-		if(validaEmprestimo(emprestimo)) {
-			if (emprestimo.getId() == null) {
-				
-				novoEmprestimo(emprestimo);
-				
-				return persist.insert(emprestimo);
-			} if (emprestimo.getDataDevolucao() != null){
-				
-				devolverEmprestimo(emprestimo);
-				
-				
-				return persist.update(emprestimo);
 
-			} else {
-				
-				editarEmprestimo(emprestimo);
-				
-				return persist.update(emprestimo);
-			}
+		if (emprestimo.getId() == null) {
+			novoEmprestimo(emprestimo);
+
+			return persist.insert(emprestimo);
 		}
-		
-		throw new Exception ("Emprestimo nao realizado, mutuario ou livro nao disponivel");
+		if (emprestimo.getDataDevolucao() != null) {
+			devolverEmprestimo(emprestimo);
+
+			return persist.update(emprestimo);
+		} else {
+			renovarEmprestimo(emprestimo);
+
+			return persist.update(emprestimo);
+		}
 	}
 
 	public Emprestimo findId(int id) {
@@ -53,28 +44,27 @@ public class EmprestimoNegocio {
 	public List<Emprestimo> listarTodos() {
 		return persist.list();
 	}
-	
+
 	private void novoEmprestimo(Emprestimo emprestimo) {
 
 		emprestimo.setDataEmprestimo(converteData(LocalDate.now().toString()));
 		emprestimo.setDataPrevistaDevolucao(converteData(emprestimo.getDataPrevistaDevolucao().toString()));
-		lvpersist.alterarStatus(emprestimo.getLivro().getId());
-		mpersist.adicionarEmprestimo(emprestimo.getMutuario().getId());
+		lvnegocio.alterarStatus(emprestimo.getLivro().getId());
+		mnegocio.adicionarEmprestimo(emprestimo.getMutuario().getId());
 	}
-	
-	private void devolverEmprestimo(Emprestimo emprestimo){
-		
-		emprestimo.setDataDevolucao(converteData(emprestimo.getDataDevolucao().toString()));
-		lvpersist.alterarStatus(emprestimo.getLivro().getId());
-		mpersist.subtrairEmprestimo(emprestimo.getMutuario().getId());
-	}
-	
-	private void editarEmprestimo(Emprestimo emprestimo) {
 
-		emprestimo.setDataEmprestimo(converteData(emprestimo.getDataEmprestimo().toString()));
+	private void devolverEmprestimo(Emprestimo emprestimo) {
+
+		emprestimo.setDataDevolucao(converteData(emprestimo.getDataDevolucao().toString()));
+		lvnegocio.alterarStatus(emprestimo.getLivro().getId());
+//		mnegocio.subtrairEmprestimo(emprestimo.getMutuario().getId());
+	}
+
+	private void renovarEmprestimo(Emprestimo emprestimo) {
+
 		emprestimo.setDataPrevistaDevolucao(converteData(emprestimo.getDataPrevistaDevolucao().toString()));
 	}
-	
+
 	protected String converteData(String string) {
 
 		SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
@@ -90,11 +80,18 @@ public class EmprestimoNegocio {
 		return null;
 
 	}
-	
+
 	private boolean validaEmprestimo(Emprestimo emprestimo) {
-		
-		if (validaMutuario(emprestimo.getMutuario().getId())) {
-			if (validaLivro(emprestimo.getLivro().getId())) {
+
+		boolean novoEmprestimo;
+
+		if (emprestimo.getId() == null)
+			novoEmprestimo = true;
+		else
+			novoEmprestimo = false;
+
+		if (validaMutuario(emprestimo.getMutuario().getId(), novoEmprestimo)) {
+			if (validaLivro(emprestimo.getLivro().getId(), novoEmprestimo)) {
 				return true;
 			}
 		}
@@ -102,28 +99,29 @@ public class EmprestimoNegocio {
 		return false;
 	}
 
-	private boolean validaLivro(int idLivro) {
-		
-		Livro livro = lvpersist.findId(idLivro);
-		
-		if (livro.isStatus())
-			return false;
-		return true;
+	private boolean validaLivro(int idLivro, boolean novoEmprestimo) {
+		/*
+		 * Livro livro = lvnegocio.findId(idLivro);
+		 * 
+		 * if (livro.isStatus()) return false; else if (novoEmprestimo) return false;
+		 */ return true;
 	}
 
-	private boolean validaMutuario(int idMutuario) {
-		
-		Mutuario mutuario = mpersist.findId(idMutuario);
-		
-		int nrMaxEmprPorMutuario = 1;
-		
-		if (mutuario.getQtdeEmprestimoAtivos() <= nrMaxEmprPorMutuario) {
-			return true;
-		}
-		
-		return false;
+	private boolean validaMutuario(int idMutuario, boolean novoEmprestimo) {
+
+		/*
+		 * Mutuario mutuario = mnegocio.findId(idMutuario);
+		 * 
+		 * int nrMaxEmprPorMutuario = 1;
+		 * 
+		 * if (mutuario.getQtdeEmprestimoAtivos() < nrMaxEmprPorMutuario) { return true;
+		 * } else if (mutuario.getQtdeEmprestimoAtivos() == nrMaxEmprPorMutuario &&
+		 * novoEmprestimo == false) { return true; }
+		 * 
+		 * return false;
+		 */
+		return true;
+
 	}
-	
-	
-	
+
 }

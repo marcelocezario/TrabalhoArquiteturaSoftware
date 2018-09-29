@@ -36,8 +36,20 @@ public class MutuarioNegocio {
 	public void load() {
 		
 		if (listarTodos().size() == 0) {
-			salvar(new Mutuario("Marcelo Henrique", "Rua Senador Accyoli Filho, 511", "41999998888"));
-			salvar(new Mutuario("Gabryel", "Rua A, 10", "4133333333"));
+			salvar(new Mutuario("Marcelo Henrique", "Rua Senador Accyoli Filho, 511", "41999998888", 0));
+			salvar(new Mutuario("Gabryel", "Rua A, 10", "4133333333", 0));
 		}
+	}
+	
+	public void adicionarEmprestimo (int idMutuario) {
+		
+		persist.adicionarEmprestimo(idMutuario);
+		
+	}
+	
+	public void subtrairEmprestimo (int idMutuario) {
+		
+		persist.subtrairEmprestimo(idMutuario);
+
 	}
 }

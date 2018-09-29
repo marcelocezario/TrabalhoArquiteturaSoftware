@@ -7,21 +7,14 @@ public class Mutuario {
 	private String endereco;
 	private String telefone;
 	private int qtdeEmprestimosAtivos = 0;
-	
-	public int getQtdeEmprestimoAtivos() {
-		return qtdeEmprestimosAtivos;
-	}
-
-	public void setQtdeEmprestimosAtivos(int qtdeEmprestimosAtivos) {
-		this.qtdeEmprestimosAtivos = qtdeEmprestimosAtivos;
-	}
 
 	public Mutuario(){}
 	
-	public Mutuario(String nome, String endereco, String telefone){
+	public Mutuario(String nome, String endereco, String telefone, int qtdeEmprestimosAtivos){
 		this.nome = nome;
 		this.endereco = endereco;
 		this.telefone = telefone;
+		this.qtdeEmprestimosAtivos = qtdeEmprestimosAtivos;
 	}
 	
 	public String getNome() {
@@ -49,6 +42,13 @@ public class Mutuario {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public int getQtdeEmprestimoAtivos() {
+		return qtdeEmprestimosAtivos;
+	}
+
+	public void setQtdeEmprestimosAtivos(int qtdeEmprestimosAtivos) {
+		this.qtdeEmprestimosAtivos = qtdeEmprestimosAtivos;
 	}
 
 }

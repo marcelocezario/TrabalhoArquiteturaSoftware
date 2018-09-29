@@ -42,4 +42,8 @@ public class LivroNegocio {
 			salvar(new Livro("Testando 2", 400, "Esse é outro teste", autorBC.findId(1), false));
 		}
 	}
+	
+	public void alterarStatus(int idLivro) {
+		persist.alterarStatus(idLivro);
+	}
 }
