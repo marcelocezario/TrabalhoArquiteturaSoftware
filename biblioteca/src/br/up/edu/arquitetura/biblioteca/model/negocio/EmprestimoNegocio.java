@@ -64,6 +64,7 @@ public class EmprestimoNegocio {
 	private void devolverEmprestimo(Emprestimo emprestimo) {
 
 		emprestimo.setDataDevolucao(converteData(emprestimo.getDataDevolucao().toString()));
+		alterarStatusLivro(emprestimo.getLivro().getId());
 	}
 
 	private void editarEmprestimo(Emprestimo emprestimo) {
